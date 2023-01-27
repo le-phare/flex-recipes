@@ -1,0 +1,9 @@
+faros_event_log:
+    event_log_transaction_class: App\Entity\EventLog\Transaction
+    event_log_log_class: App\Entity\EventLog\Log
+    event_log_tag_class: App\Entity\EventLog\Tag
+
+doctrine:
+    dbal:
+        types:
+            event_log_status: Faros\Component\EventLog\Types\EventLogStatusType

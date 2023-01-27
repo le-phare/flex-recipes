@@ -1,0 +1,11 @@
+<bg=blue;fg=white>                      </>
+<bg=blue;fg=white> Docker configuration </>
+<bg=blue;fg=white>                      </>
+
+  * <fg=blue>Update</> the <comment>VIRTUAL_HOST</> environment variable in the file <comment>docker-compose.yml</>
+
+  * <fg=blue>Update</> the database name in the file <comment>.env.dev</>
+
+  * <fg=blue>Run</> your application:
+    1. Change to the project directory
+    2. Execute the <comment>docker-compose up -d</> command

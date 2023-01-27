@@ -1,0 +1,8 @@
+{
+    "bundles": {
+        "Faros\\Bundle\\UserFeedbackBundle\\FarosUserFeedbackBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    }
+}

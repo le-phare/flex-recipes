@@ -1,0 +1,8 @@
+{
+    "copy-from-recipe": {
+        ".php_cs.dist": ".php_cs.dist"
+    },
+    "gitignore": [
+        ".php_cs"
+    ]
+}

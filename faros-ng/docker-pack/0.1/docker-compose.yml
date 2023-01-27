@@ -1,0 +1,40 @@
+version: '3'
+networks:
+    proxy:
+        external:
+            name: dev_proxy
+    db:
+        external:
+            name: dev_database
+    maildev:
+        external:
+            name: dev_maildev
+    memcached:
+        external:
+            name: dev_memcached
+
+services:
+    php: 
+        image: lephare/php:7.3
+        volumes:
+            - .:/var/www/symfony
+        networks:
+            - default
+            - db
+            - memcached
+            - maildev
+        environment:
+            SYMFONY_DEPRECATIONS_HELPER: "max[direct]=0&verbose=1"
+
+    web:
+        image: lephare/apache:2.4
+        volumes:
+            - .:/var/www/symfony
+        networks:
+            - default
+            - proxy
+        env_file:
+            - .env.local
+        environment:
+            HTTPS_METHOD: noredirect
+            DOCUMENT_ROOT: /var/www/symfony/public

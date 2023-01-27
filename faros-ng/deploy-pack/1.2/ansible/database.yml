@@ -1,0 +1,13 @@
+---
+- name: Sync local database with remote
+  hosts: app
+  roles:
+    - db-pull
+  vars_files:
+    - _variables.yml
+  vars:
+    db_pull_local_backup_path: ../var/database/
+    db_pull_remote_backup_path: "{{ ansistrano_deploy_to }}/var/database"
+    db_pull_remote_database_host: localhost
+    db_pull_remote_database_port: 5432
+    db_pull_remote_database_password: "{{ vault_database_password }}"

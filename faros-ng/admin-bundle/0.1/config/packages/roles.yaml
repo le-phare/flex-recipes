@@ -1,0 +1,17 @@
+security:
+    role_hierarchy:
+        ROLE_SUPER_ADMIN:
+            - ROLE_ADMIN
+            - ROLE_ADMIN_PARAMETER
+            - ROLE_ADMIN_IMPORT
+            - ROLE_ADMIN_EXPORT
+
+        ROLE_ADMIN:
+            - ROLE_ADMIN_LOGIN
+            - ROLE_ADMIN_USER
+            - ROLE_ADMIN_GROUP
+            - ROLE_ADMIN_ACTION
+
+imports:
+    - { resource: "@FarosAdminBundle/Resources/config/role/core.yml" }
+    - { resource: "@FarosAdminBundle/Resources/config/role/elfinder.yml" }

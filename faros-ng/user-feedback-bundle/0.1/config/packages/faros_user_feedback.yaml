@@ -1,0 +1,3 @@
+faros_user_feedback:
+    sentry_dsn: "%env(SENTRY_DSN)%"
+    enabled: true

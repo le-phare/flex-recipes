@@ -1,0 +1,39 @@
+---
+- name: Deploy app
+  hosts: app
+  roles:
+      - lephare.ansible-deploy
+  vars_files:
+      - _variables.yml
+  vars:
+      ansistrano_shared_files:
+          - .env.local
+      ansistrano_shared_paths:
+          - var/log
+          - var/exchange
+          - public/build
+      lephare_sentry_notify: true
+      lephare_sentry_token: <sentry api token>
+      lephare_assets_build_path: "../public/build/"
+      lephare_assets_web_path: "build/"
+      lephare_assets_publish: false
+      lephare_document_root_path: "{{ ansistrano_release_path.stdout }}/public"
+      lephare_composer_options: "--no-dev --optimize-autoloader --apcu-autoloader --no-interaction"
+      lephare_crontab_path: "{{ ansistrano_release_path.stdout }}/.crontab"
+      lephare_crontab_install: true
+      lephare_install_adminer: true
+      lephare_http_basic_password: <admin_password>
+  tasks:
+      - name: Check directory
+        delegate_to: localhost
+        stat:
+            path: ../public/build/
+        register: build_dir
+
+      - name: Upload assets
+        when: build_dir.stat.exists and build_dir.stat.isdir
+        synchronize:
+            src: ../public/build/
+            dest: "{{ ansistrano_deploy_to }}/shared/public/"
+            recursive: yes
+            delete: yes

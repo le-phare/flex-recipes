@@ -1,0 +1,14 @@
+faros_glide:
+    presets:
+        # example:
+        #     w: 360
+        #     h: 240
+        #     fit: crop
+    servers:        
+        # image:
+        #    source: <flystem_service_name>
+        #    cache: <flystem_service_name>
+        #    max_image_size: 4000000
+        #    defaults:
+        #        fm: pjpg
+        #        q: 80

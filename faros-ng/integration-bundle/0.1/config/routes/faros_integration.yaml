@@ -1,0 +1,3 @@
+faros_integration:
+    resource: "@FarosIntegrationBundle/Resources/config/routing.yml"
+    prefix: /_dev

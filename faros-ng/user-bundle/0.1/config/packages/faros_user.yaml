@@ -1,0 +1,7 @@
+faros_user:
+    user_class: App\Entity\User
+    action_class: App\Entity\UserAction
+    group_class: App\Entity\Group
+
+monolog:
+  channels: ['faros_action']

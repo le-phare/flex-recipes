@@ -1,0 +1,41 @@
+build:
+    environment:
+        php:
+            version: 7.2.7
+            ini:
+                memory_limit: "-1"
+
+    dependencies:
+        override:
+            - composer install --ignore-platform-reqs --no-interaction --no-scripts --no-suggest
+
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - command: ./vendor/bin/phpunit --coverage-clover coverage.xml
+                      coverage:
+                        file: coverage.xml
+                        format: clover
+                    - command: ./vendor/bin/php-cs-fixer fix --dry-run --format checkstyle > analysis-php-cs-fixer.xml
+                      analysis:
+                        file: analysis-php-cs-fixer.xml
+                        format: 'general-checkstyle'
+                    - command: ./vendor/bin/phpstan analyse --level 0 --no-progress --error-format=checkstyle src > analysis-phpstan.xml
+                      analysis:
+                        file: analysis-phpstan.xml
+                        format: 'general-checkstyle'
+                    - php-scrutinizer-run
+
+filter:
+    paths:
+        - src/
+    excluded_paths:
+        - tests/
+    dependency_paths:
+        - vendor/
+
+build_failure_conditions:
+    - 'elements.rating(<= D).new.exists'
+    - 'issues.severity(>= MAJOR).new.exists'
+    - 'project.metric("scrutinizer.quality", < 8)'

@@ -1,0 +1,10 @@
+{
+    "copy-from-recipe": {
+        "public/": "%PUBLIC_DIR%/",
+        "docker-compose.yml": "docker-compose.yml",
+        ".env.local": ".env.local"
+    },
+    "gitignore": [
+        "docker-compose.override.yml"
+    ]
+}

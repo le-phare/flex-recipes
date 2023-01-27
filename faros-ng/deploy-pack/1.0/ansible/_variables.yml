@@ -1,0 +1,8 @@
+ansistrano_git_repo: <git_repository>
+lephare_sentry_project: <sentry_project>
+lephare_http_basic_user: <admin_user>
+
+db_pull_local_database_host: <local_database_host>
+db_pull_local_database_name: <local_database_name>
+db_pull_local_database_user: <local_database_user>
+db_pull_local_database_password: <local_database_password>

@@ -1,0 +1,7 @@
+<bg=blue;fg=white>                          </>
+<bg=blue;fg=white> Deployment configuration </>
+<bg=blue;fg=white>                          </>
+
+  * Modify project variables in ansible/project.yml </>
+
+  * Configure each environment ansible/<env>/app/vars </>

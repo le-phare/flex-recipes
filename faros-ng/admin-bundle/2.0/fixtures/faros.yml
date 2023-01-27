@@ -1,0 +1,44 @@
+App\Entity\User:
+    super-admin:
+        enabled: "true"
+        firstname: Admin
+        lastname: Admin
+        username: admin.project
+        password: changeme
+        email: john.doe@example.com
+        userRoles: ['ROLE_SUPER_ADMIN']
+
+App\Entity\Group:
+    group_admin:
+        roles: ['ROLE_ADMIN']
+        users: ['@super-admin']
+        name: Administrateurs
+
+App\Entity\Parameter:
+    emails.password_token_interval:
+        name: emails.password_token_interval
+        value: 48
+        description: "Temps de validité (en heures) du lien de remise à zéro du mot de passe utilisateur."
+        type: Symfony\Component\Form\Extension\Core\Type\IntegerType
+    emails.noreplyemail:
+        name: emails.noreplyemail
+        value: noreply@lephare.com
+        description: "Adresse d'expédition des emails envoyés par l'application"
+        type: Symfony\Component\Form\Extension\Core\Type\TextType
+    emails.noreplyname:
+        name: emails.noreplyname
+        value: No Reply
+        description: "Nom d'expédition des emails envoyés par l'application"
+        type: Symfony\Component\Form\Extension\Core\Type\TextType
+
+App\Entity\Export:
+    user_top_connection:
+        name: user_top_connection
+        title: Top connexion utilisateurs
+        description: |
+            Contient la liste des 100 utilisateurs qui se connectent le plus souvent à l'application
+        sql: |
+            SELECT u.email, COUNT(DISTINCT a.id)
+            FROM faros_user_action a
+            INNER JOIN _user u ON (a.user_id = u.id)
+            WHERE a.name = 'admin.login'

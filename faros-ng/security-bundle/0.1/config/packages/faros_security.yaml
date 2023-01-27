@@ -1,0 +1,2 @@
+faros_security:
+    login_attempt_class: App\Entity\UserLoginAttempt

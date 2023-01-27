@@ -1,0 +1,11 @@
+faros_admin_admin:
+    resource: "@FarosAdminBundle/Resources/config/routing/admin.yml"
+
+faros_admin_core:
+    resource: "@FarosAdminBundle/Resources/config/routing/core.yml"
+
+faros_admin_qb:
+    resource: "@FarosAdminBundle/Resources/config/routing/qb.yml"
+
+faros_admin_elfinder:
+    resource: "@FarosAdminBundle/Resources/config/routing/elfinder.yml"
