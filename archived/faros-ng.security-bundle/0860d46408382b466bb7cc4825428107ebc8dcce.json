@@ -1,0 +1,54 @@
+{
+    "manifests": {
+        "faros-ng/security-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\SecurityBundle\\FarosSecurityBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_security.yaml": {
+                    "contents": [
+                        "faros_security:",
+                        "    login_attempt_class: App\\Entity\\UserLoginAttempt",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UserLoginAttempt.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Security\\Model\\LoginAttempt as LoginAttemptModel;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"Faros\\Bundle\\SecurityBundle\\ORM\\LoginAttemptRepository\")",
+                        " * @ORM\\Table(name=\"faros_login_attempt\")",
+                        " */",
+                        "class UserLoginAttempt extends LoginAttemptModel",
+                        "{",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "0860d46408382b466bb7cc4825428107ebc8dcce"
+        }
+    }
+}

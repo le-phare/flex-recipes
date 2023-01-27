@@ -1,0 +1,27 @@
+{
+    "manifests": {
+        "faros-ng/user-feedback-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\UserFeedbackBundle\\FarosUserFeedbackBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_user_feedback.yaml": {
+                    "contents": [
+                        "faros_user_feedback:",
+                        "    sentry_dsn: \"%env(SENTRY_DSN)%\"",
+                        "    enabled: true"
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "5823b2c1f8845c4570887bb38f80249e6cd9f7d6"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "manifests": {
+        "faros-ng/parameter-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\ParameterBundle\\FarosParameterBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_parameter.yaml": {
+                    "contents": [
+                        "faros_parameter:",
+                        "    cache_service: cache.app",
+                        "    parameter_class: App\\Entity\\Parameter",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Parameter.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Parameter\\Model\\Parameter as ParameterModel;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"Faros\\Bundle\\ParameterBundle\\ORM\\ParameterRepository\")",
+                        " * @ORM\\Table(name=\"faros_parameter\")",
+                        " */",
+                        "class Parameter extends ParameterModel",
+                        "{",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "4f680382220e8ff75a8c73a974fe481fcfc7439e"
+        }
+    }
+}

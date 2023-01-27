@@ -1,0 +1,179 @@
+{
+    "manifests": {
+        "faros-ng/admin-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\AdminBundle\\FarosAdminBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "fixtures/": "fixtures/",
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_admin.yaml": {
+                    "contents": [
+                        "faros_admin:",
+                        "    firewalls: ['main']",
+                        "",
+                        "twig:",
+                        "    globals:",
+                        "        project:",
+                        "            name: Faros",
+                        "            logo: /bundles/farosadmin/themes/avant/img/logo-faros.png",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/roles.yaml": {
+                    "contents": [
+                        "security:",
+                        "    role_hierarchy:",
+                        "        ROLE_SUPER_ADMIN:",
+                        "            - ROLE_ADMIN",
+                        "            - ROLE_ADMIN_PARAMETER",
+                        "            - ROLE_ADMIN_IMPORT",
+                        "            - ROLE_ADMIN_EXPORT",
+                        "",
+                        "        ROLE_ADMIN:",
+                        "            - ROLE_ADMIN_LOGIN",
+                        "            - ROLE_ADMIN_USER",
+                        "            - ROLE_ADMIN_GROUP",
+                        "            - ROLE_ADMIN_ACTION",
+                        "",
+                        "imports:",
+                        "    - { resource: \"@FarosAdminBundle/Resources/config/role/core.yml\" }",
+                        "    - { resource: \"@FarosAdminBundle/Resources/config/role/elfinder.yml\" }",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/security.yaml": {
+                    "contents": [
+                        "imports:",
+                        "    - { resource: roles.yaml }",
+                        "",
+                        "security:",
+                        "    encoders:",
+                        "        Symfony\\Component\\Security\\Core\\User\\UserInterface: bcrypt",
+                        "",
+                        "    providers:",
+                        "        in_memory:",
+                        "            memory: ~",
+                        "        main:",
+                        "            entity:",
+                        "                class: App\\Entity\\User",
+                        "",
+                        "    firewalls:",
+                        "        dev:",
+                        "            pattern: ^/(_(profiler|wdt)|css|images|js|bundles|assets|build)/",
+                        "            security: false",
+                        "",
+                        "        main:",
+                        "            anonymous: ~",
+                        "            remember_me:",
+                        "                secret: \"%kernel.secret%\"",
+                        "                lifetime: 2592000",
+                        "                path:     /",
+                        "                domain:   ~",
+                        "                secure: true",
+                        "            pattern:    ^/",
+                        "            switch_user: { role: ROLE_ALLOWED_TO_SWITCH, parameter: _switch_user }",
+                        "            user_checker: faros_user.user_checker",
+                        "            guard:",
+                        "                authenticators:",
+                        "                    - faros_admin.login_form_authenticator",
+                        "            logout:",
+                        "                path:   admin_logout",
+                        "                target: admin_login",
+                        "                invalidate_session: false",
+                        "            provider: main",
+                        "",
+                        "    access_control:",
+                        "        - { path: ^/translations, roles: IS_AUTHENTICATED_ANONYMOUSLY}",
+                        "        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}",
+                        "        - { path: ^/forgot-password, roles: IS_AUTHENTICATED_ANONYMOUSLY}",
+                        "        - { path: ^/, role: ROLE_ADMIN }",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/faros_admin.yaml": {
+                    "contents": [
+                        "faros_admin_admin:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/admin.yml\"",
+                        "",
+                        "faros_admin_core:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/core.yml\"",
+                        "",
+                        "faros_admin_qb:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/qb.yml\"",
+                        "",
+                        "faros_admin_elfinder:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/elfinder.yml\""
+                    ],
+                    "executable": false
+                },
+                "fixtures/faros.yml": {
+                    "contents": [
+                        "App\\Entity\\User:",
+                        "    super-admin:",
+                        "        enabled: \"true\"",
+                        "        firstname: Admin",
+                        "        lastname: Admin",
+                        "        username: admin.project",
+                        "        password: changeme",
+                        "        email: john.doe@example.com",
+                        "        userRoles: ['ROLE_SUPER_ADMIN']",
+                        "",
+                        "App\\Entity\\Group:",
+                        "    group_admin:",
+                        "        roles: ['ROLE_ADMIN']",
+                        "        users: ['@super-admin']",
+                        "        name: Administrateurs",
+                        "",
+                        "App\\Entity\\Parameter:",
+                        "    emails.password_token_interval:",
+                        "        name: emails.password_token_interval",
+                        "        value: 48",
+                        "        description: \"Temps de validit\u00e9 (en heures) du lien de remise \u00e0 z\u00e9ro du mot de passe utilisateur.\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+                        "    emails.noreplyemail:",
+                        "        name: emails.noreplyemail",
+                        "        value: noreply@lephare.com",
+                        "        description: \"Adresse d'exp\u00e9dition des emails envoy\u00e9s par l'application\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "    emails.noreplyname:",
+                        "        name: emails.noreplyname",
+                        "        value: No Reply",
+                        "        description: \"Nom d'exp\u00e9dition des emails envoy\u00e9s par l'application\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "    security.user_max_login_attempt:",
+                        "        name: security.user_max_login_attempt",
+                        "        value: 3",
+                        "        description: \"Nombre maximum de tentatives d'authentification avant verouillage des comptes utilisateurs\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+                        "",
+                        "App\\Entity\\Export:",
+                        "    user_top_connection:",
+                        "        name: user_top_connection",
+                        "        title: Top connexion utilisateurs",
+                        "        description: |",
+                        "            Contient la liste des 100 utilisateurs qui se connectent le plus souvent \u00e0 l'application",
+                        "        sql: |",
+                        "            SELECT u.email, COUNT(DISTINCT a.id)",
+                        "            FROM faros_user_action a",
+                        "            INNER JOIN _user u ON (a.user_id = u.id)",
+                        "            WHERE a.name = 'admin.login'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "9754fc004f5beb80548f38e48c259e4372f7df5b"
+        }
+    }
+}

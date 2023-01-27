@@ -1,0 +1,41 @@
+{
+    "manifests": {
+        "friendsofphp/php-cs-fixer": {
+            "manifest": {
+                "copy-from-recipe": {
+                    ".php_cs.dist": ".php_cs.dist"
+                },
+                "gitignore": [
+                    ".php_cs"
+                ]
+            },
+            "files": {
+                ".php_cs.dist": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "$finder = PhpCsFixer\\Finder::create()",
+                        "    ->in(__DIR__.'/src')",
+                        ";",
+                        "",
+                        "return PhpCsFixer\\Config::create()",
+                        "    ->setRules(array(",
+                        "        '@PSR2' => true,",
+                        "        '@Symfony' => true,",
+                        "        'phpdoc_align' => false,",
+                        "        'phpdoc_scalar' => false,",
+                        "        'phpdoc_summary' => false,",
+                        "        'no_unused_imports' => true,",
+                        "        'array_syntax' => array('syntax' => 'short'),",
+                        "    ))",
+                        "    ->setFinder($finder)",
+                        ";",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "a88dae3bae70d84257ce6981382ab5da6c5fac29"
+        }
+    }
+}

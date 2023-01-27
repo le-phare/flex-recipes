@@ -1,0 +1,83 @@
+{
+    "manifests": {
+        "faros-ng/code-quality-pack": {
+            "manifest": {
+                "copy-from-recipe": {
+                    ".editorconfig": ".editorconfig",
+                    ".scrutinizer.yml": ".scrutinizer.yml"
+                }
+            },
+            "files": {
+                ".editorconfig": {
+                    "contents": [
+                        "root = true",
+                        "",
+                        "[*]",
+                        "indent_style = space",
+                        "indent_size = 4",
+                        "end_of_line = lf",
+                        "charset = utf-8",
+                        "trim_trailing_whitespace = true",
+                        "insert_final_newline = true",
+                        "",
+                        "[*.{js,json,vue,css,less,scss}]",
+                        "indent_size = 2",
+                        "",
+                        "[Makefile]",
+                        "indent_style = tab",
+                        ""
+                    ],
+                    "executable": false
+                },
+                ".scrutinizer.yml": {
+                    "contents": [
+                        "build:",
+                        "    environment:",
+                        "        php:",
+                        "            version: 7.2.7",
+                        "            ini:",
+                        "                memory_limit: \"-1\"",
+                        "",
+                        "    dependencies:",
+                        "        override:",
+                        "            - composer install --ignore-platform-reqs --no-interaction --no-scripts --no-suggest",
+                        "",
+                        "    nodes:",
+                        "        analysis:",
+                        "            tests:",
+                        "                override:",
+                        "                    - command: ./vendor/bin/phpunit --coverage-clover coverage.xml",
+                        "                      coverage:",
+                        "                        file: coverage.xml",
+                        "                        format: clover",
+                        "                    - command: ./vendor/bin/php-cs-fixer fix --dry-run --format checkstyle > analysis-php-cs-fixer.xml",
+                        "                      analysis:",
+                        "                        file: analysis-php-cs-fixer.xml",
+                        "                        format: 'general-checkstyle'",
+                        "                    - command: ./vendor/bin/phpstan analyse --level 0 --no-progress --error-format=checkstyle src > analysis-phpstan.xml",
+                        "                      analysis:",
+                        "                        file: analysis-phpstan.xml",
+                        "                        format: 'general-checkstyle'",
+                        "                    - php-scrutinizer-run",
+                        "",
+                        "filter:",
+                        "    paths:",
+                        "        - src/",
+                        "    excluded_paths:",
+                        "        - tests/",
+                        "    dependency_paths:",
+                        "        - vendor/",
+                        "",
+                        "build_failure_conditions:",
+                        "    - 'elements.rating(<= D).new.exists'",
+                        "    - 'issues.severity(>= MAJOR).new.exists'",
+                        "    - 'project.metric(\"scrutinizer.quality\", < 8)'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "e36c4bc7fffe0c962d70a629a9ca0ae6c400b703"
+        }
+    }
+}

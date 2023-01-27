@@ -1,0 +1,60 @@
+{
+    "manifests": {
+        "faros-ng/export-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\ExportBundle\\FarosExportBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_export.yaml": {
+                    "contents": [
+                        "faros_export:",
+                        "    export_class: App\\Entity\\Export",
+                        "    allowed_form_types:",
+                        "        text: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "        email: Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType",
+                        "        integer: Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+                        "        date: Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType",
+                        "        choice: Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Export.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Export\\Model\\Export as ExportModel;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"Faros\\Bundle\\ExportBundle\\ORM\\ExportRepository\")",
+                        " * @ORM\\Table(name=\"faros_export\")",
+                        " */",
+                        "class Export extends ExportModel",
+                        "{",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "8212a1b7953e1c46a89dd43efb6f1602d2e95acb"
+        }
+    }
+}

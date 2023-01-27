@@ -1,0 +1,163 @@
+{
+    "manifests": {
+        "faros-ng/event-log-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\EventLogBundle\\FarosEventLogBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_event_log.yaml": {
+                    "contents": [
+                        "faros_event_log:",
+                        "    event_log_transaction_class: App\\Entity\\EventLog\\Transaction",
+                        "    event_log_log_class: App\\Entity\\EventLog\\Log",
+                        "    event_log_tag_class: App\\Entity\\EventLog\\Tag",
+                        "",
+                        "doctrine:",
+                        "    dbal:",
+                        "        types:",
+                        "            event_log_status: Faros\\Component\\EventLog\\Types\\EventLogStatusType",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EventLog/Log.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EventLog;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\EventLog\\Model\\Log as LogModel;",
+                        "use Faros\\Component\\EventLog\\Model\\LogInterface;",
+                        "use Faros\\Component\\EventLog\\Traits\\TimestampableImmutableEntity;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"Faros\\Bundle\\EventLogBundle\\Repository\\LogRepository\")",
+                        " * @ORM\\Table(name=\"_log\")",
+                        " */",
+                        "class Log extends LogModel implements LogInterface",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableImmutableEntity;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\ManyToOne(targetEntity=\"Transaction\", inversedBy=\"logs\")",
+                        "     */",
+                        "    protected $transaction;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EventLog/Tag.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EventLog;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\EventLog\\Model\\Tag as TagModel;",
+                        "use Faros\\Component\\EventLog\\Model\\TagInterface;",
+                        "use Faros\\Component\\EventLog\\Traits\\TimestampableImmutableEntity;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"Faros\\Bundle\\EventLogBundle\\Repository\\TagRepository\")",
+                        " * @ORM\\Table(name=\"_tag\")",
+                        " */",
+                        "class Tag extends TagModel implements TagInterface",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableImmutableEntity;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/EventLog/Transaction.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\EventLog;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\EventLog\\Model\\Transaction as TransactionModel;",
+                        "use Faros\\Component\\EventLog\\Model\\TransactionInterface;",
+                        "use Faros\\Component\\EventLog\\Traits\\TimestampableImmutableEntity;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=\"Faros\\Bundle\\EventLogBundle\\Repository\\TransactionRepository\")",
+                        " * @ORM\\Table(name=\"_transaction\")",
+                        " */",
+                        "class Transaction extends TransactionModel implements TransactionInterface",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableImmutableEntity;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\ManyToMany(targetEntity=\"Tag\")",
+                        "     * @ORM\\JoinTable(name=\"_transaction_tag\")",
+                        "     */",
+                        "    protected $tags;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\OneToMany(targetEntity=\"Log\", mappedBy=\"transaction\")",
+                        "     */",
+                        "    protected $logs;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\ManyToMany(targetEntity=\"App\\Entity\\User\")",
+                        "     * @ORM\\JoinTable(name=\"_transaction_user\")",
+                        "     */",
+                        "    protected $viewedBy;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\ManyToOne(targetEntity=\"App\\Entity\\User\")",
+                        "     */",
+                        "    protected $assignee;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\ManyToOne(targetEntity=\"App\\Entity\\User\")",
+                        "     */",
+                        "    protected $resolvedBy;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "640f0260a790ecb255e6599c7003a5cc9648a2f4"
+        }
+    }
+}
