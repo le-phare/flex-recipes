@@ -11,7 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
 /**
- * @ORM\Entity(repositoryClass="Faros\Bundle\CommerceBundle\Repository\OrderRepository")
+ * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="commerce_order")
  */
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
