@@ -42,7 +42,7 @@ class Adjustment extends FarosAdjustment
     protected $order;
 
     /**
-     * @ORM\ManyToOne(targetEntity="OrderItem", inversedBy="adjustments")
+     * @ORM\ManyToOne(targetEntity=OrderItem::class, inversedBy="adjustments")
      * @ORM\JoinColumn(name="order_item_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      *
      * @var OrderItem|null
@@ -52,7 +52,7 @@ class Adjustment extends FarosAdjustment
     protected $orderItem;
 
     /**
-     * @ORM\ManyToOne(targetEntity="OrderItemUnit", inversedBy="adjustments")
+     * @ORM\ManyToOne(targetEntity=OrderItemUnit::class, inversedBy="adjustments")
      * @ORM\JoinColumn(name="order_item_unit_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      *
      * @var OrderItemUnit|null
