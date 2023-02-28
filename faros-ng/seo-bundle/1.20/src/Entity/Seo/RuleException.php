@@ -24,7 +24,7 @@ class RuleException extends RuleExceptionModel
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Seo\Rule", inversedBy="exceptions")
+     * @ORM\ManyToOne(targetEntity=Rule::class, inversedBy="exceptions")
      *
      * @var Rule|null
      */
