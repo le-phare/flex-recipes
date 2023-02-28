@@ -12,7 +12,7 @@ use Faros\Bundle\EventLogBundle\Repository\TransactionRepository;
 use Gedmo\Blameable\Traits\BlameableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="Faros\Bundle\EventLogBundle\Repository\TransactionRepository")
+ * @ORM\Entity(repositoryClass=TransactionRepository::class)
  * @ORM\Table(name="_transaction")
  */
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]
