@@ -30,7 +30,7 @@ class OrderItemUnit extends FarosOrderItemUnit
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="OrderItem", inversedBy="units")
+     * @ORM\ManyToOne(targetEntity=OrderItem::class, inversedBy="units")
      * @ORM\JoinColumn(name="order_item_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      *
      * @var OrderItem
