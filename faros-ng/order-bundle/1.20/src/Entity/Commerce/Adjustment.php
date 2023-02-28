@@ -32,7 +32,7 @@ class Adjustment extends FarosAdjustment
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Order", inversedBy="adjustments")
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="adjustments")
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id", nullable=true, onDelete="CASCADE")
      *
      * @var Order|null
