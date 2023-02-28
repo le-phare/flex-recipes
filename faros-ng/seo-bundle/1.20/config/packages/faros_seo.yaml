@@ -1,0 +1,18 @@
+faros_seo:
+    redirection:
+        enable: true
+        exclude_patterns:
+            - ^/admin
+            - ^/api
+            - ^/assets
+            - ^/bundles
+            - ^/build
+            - ^/translations
+            - ^/js
+            - ^/image
+            - ^/media
+            - ^/_profiler
+    rewrite_redirect: false
+    redirection_class: App\Entity\Seo\Redirection
+    rule_class: App\Entity\Seo\Rule
+    rule_exception_class: App\Entity\Seo\RuleException

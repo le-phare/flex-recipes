@@ -1,0 +1,3 @@
+faros_parameter:
+    cache_service: cache.app
+    parameter_class: App\Entity\Parameter
