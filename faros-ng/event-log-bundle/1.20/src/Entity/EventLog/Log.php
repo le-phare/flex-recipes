@@ -10,7 +10,7 @@ use Faros\Bundle\EventLogBundle\Repository\LogRepository;
 use Gedmo\Blameable\Traits\BlameableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="Faros\Bundle\EventLogBundle\Repository\LogRepository")
+ * @ORM\Entity(repositoryClass=LogRepository::class)
  * @ORM\Table(name="_log")
  */
 #[ORM\Entity(repositoryClass: LogRepository::class)]
