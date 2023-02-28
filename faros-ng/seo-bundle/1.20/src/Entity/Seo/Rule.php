@@ -25,7 +25,7 @@ class Rule extends RuleModel
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Seo\RuleException", mappedBy="rule")
+     * @ORM\OneToMany(targetEntity=RuleException::class, mappedBy="rule")
      *
      * @var Collection<int, RuleException>
      */
