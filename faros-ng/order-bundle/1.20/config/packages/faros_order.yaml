@@ -1,0 +1,6 @@
+faros_order:
+    adjustment_class: App\Entity\Commerce\Adjustment
+    order_class: App\Entity\Commerce\Order
+    order_item_class: App\Entity\Commerce\OrderItem
+    order_item_unit_class: App\Entity\Commerce\OrderItemUnit
+    use_units: true

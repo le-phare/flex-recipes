@@ -1,0 +1,8 @@
+faros_export:
+    export_class: App\Entity\Export
+    allowed_form_types:
+        text: Symfony\Component\Form\Extension\Core\Type\TextType
+        email: Symfony\Component\Form\Extension\Core\Type\EmailType
+        integer: Symfony\Component\Form\Extension\Core\Type\IntegerType
+        date: Symfony\Component\Form\Extension\Core\Type\DateType
+        choice: Symfony\Component\Form\Extension\Core\Type\ChoiceType
