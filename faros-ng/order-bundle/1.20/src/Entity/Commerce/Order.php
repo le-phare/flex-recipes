@@ -34,7 +34,7 @@ class Order extends FarosOrder
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="order", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=OrderItem::class, mappedBy="order", orphanRemoval=true, cascade={"persist"})
      * @Serializer\Groups({"cart_api"})
      * @ORM\OrderBy({"createdAt": "asc"})
      *
@@ -46,7 +46,7 @@ class Order extends FarosOrder
     protected $items;
 
     /**
-     * @ORM\OneToMany(targetEntity="Adjustment", mappedBy="order", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Adjustment::class, mappedBy="order", orphanRemoval=true, cascade={"persist"})
      * @Serializer\Groups({"cart_api"})
      *
      * @var Collection<int, Adjustment>
