@@ -40,7 +40,7 @@ class OrderItemUnit extends FarosOrderItemUnit
     protected $orderItem;
 
     /**
-     * @ORM\OneToMany(targetEntity="Adjustment", mappedBy="orderItemUnit", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Adjustment::class, mappedBy="orderItemUnit", orphanRemoval=true)
      *
      * @var Collection<int, Adjustment>
      */
