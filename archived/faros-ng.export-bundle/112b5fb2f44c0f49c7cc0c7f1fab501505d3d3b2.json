@@ -1,9 +1,9 @@
 {
     "manifests": {
-        "faros-ng/security-bundle": {
+        "faros-ng/export-bundle": {
             "manifest": {
                 "bundles": {
-                    "Faros\\Bundle\\SecurityBundle\\FarosSecurityBundle": [
+                    "Faros\\Bundle\\ExportBundle\\FarosExportBundle": [
                         "all"
                     ]
                 },
@@ -13,32 +13,37 @@
                 }
             },
             "files": {
-                "config/packages/faros_security.yaml": {
+                "config/packages/faros_export.yaml": {
                     "contents": [
-                        "faros_security:",
-                        "    login_attempt_class: App\\Entity\\UserLoginAttempt",
-                        "    max_login_attempts: 20",
+                        "faros_export:",
+                        "    export_class: App\\Entity\\Export",
+                        "    allowed_form_types:",
+                        "        text: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "        email: Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType",
+                        "        integer: Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+                        "        date: Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType",
+                        "        choice: Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType",
                         ""
                     ],
                     "executable": false
                 },
-                "src/Entity/UserLoginAttempt.php": {
+                "src/Entity/Export.php": {
                     "contents": [
                         "<?php",
                         "",
                         "namespace App\\Entity;",
                         "",
                         "use Doctrine\\ORM\\Mapping as ORM;",
-                        "use Faros\\Bundle\\SecurityBundle\\ORM\\LoginAttemptRepository;",
-                        "use Faros\\Component\\Security\\Model\\LoginAttempt as LoginAttemptModel;",
+                        "use Faros\\Component\\Export\\Model\\Export as ExportModel;",
+                        "use Faros\\Bundle\\ExportBundle\\ORM\\ExportRepository;",
                         "",
                         "/**",
-                        " * @ORM\\Entity(repositoryClass=LoginAttemptRepository::class)",
-                        " * @ORM\\Table(name=\"faros_login_attempt\")",
+                        " * @ORM\\Entity(repositoryClass=ExportRepository::class)",
+                        " * @ORM\\Table(name=\"faros_export\")",
                         " */",
-                        "#[ORM\\Entity(repositoryClass: LoginAttemptRepository::class)]",
-                        "#[ORM\\Table(name: 'faros_login_attempt')]",
-                        "class UserLoginAttempt extends LoginAttemptModel",
+                        "#[ORM\\Entity(repositoryClass: ExportRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_export')]",
+                        "class Export extends ExportModel",
                         "{",
                         "    /**",
                         "     * @ORM\\Id",
@@ -55,7 +60,7 @@
                     "executable": false
                 }
             },
-            "ref": "78cda73a5f015cdf70fa6a57ef31f5d1547c6c78"
+            "ref": "112b5fb2f44c0f49c7cc0c7f1fab501505d3d3b2"
         }
     }
 }

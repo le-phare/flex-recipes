@@ -1,0 +1,163 @@
+{
+    "manifests": {
+        "faros-ng/seo-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\SeoBundle\\FarosSeoBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                },
+                "post-install-output": [
+                    "<bg=blue;fg=white>              </>",
+                    "<bg=blue;fg=white> What's next? </>",
+                    "<bg=blue;fg=white>              </>",
+                    "",
+                    "  * <fg=blue>Update</> your database schema:",
+                    "    1. <comment>php bin/console doctrine:migrations:diff</comment>",
+                    "    2. <comment>php bin/console doctrine:migrations:migrate</comment>"
+                ]
+            },
+            "files": {
+                "config/packages/faros_seo.yaml": {
+                    "contents": [
+                        "faros_seo:",
+                        "    redirection:",
+                        "        enable: true",
+                        "        exclude_patterns:",
+                        "            - ^/admin",
+                        "            - ^/api",
+                        "            - ^/assets",
+                        "            - ^/bundles",
+                        "            - ^/build",
+                        "            - ^/translations",
+                        "            - ^/js",
+                        "            - ^/image",
+                        "            - ^/media",
+                        "            - ^/_profiler",
+                        "    rewrite_redirect: false",
+                        "    redirection_class: App\\Entity\\Seo\\Redirection",
+                        "    rule_class: App\\Entity\\Seo\\Rule",
+                        "    rule_exception_class: App\\Entity\\Seo\\RuleException",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Seo/Redirection.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Seo;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Seo\\Model\\Redirection as RedirectionModel;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity",
+                        " * @ORM\\Table(name=\"seo_redirection\")",
+                        " */",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'seo_redirection')]",
+                        "class Redirection extends RedirectionModel",
+                        "{",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue(strategy: 'IDENTITY')]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Seo/Rule.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Seo;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Seo\\Model\\Rule as RuleModel;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity",
+                        " * @ORM\\Table(name=\"seo_rule\")",
+                        " */",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'seo_rule')]",
+                        "class Rule extends RuleModel",
+                        "{",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue(strategy: 'IDENTITY')]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\OneToMany(targetEntity=RuleException::class, mappedBy=\"rule\")",
+                        "     *",
+                        "     * @var Collection<int, RuleException>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: RuleException::class, mappedBy: 'rule')]",
+                        "    protected $exceptions;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Seo/RuleException.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Seo;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Seo\\Model\\RuleException as RuleExceptionModel;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity",
+                        " * @ORM\\Table(name=\"seo_rule_exception\")",
+                        " */",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'seo_rule_exception')]",
+                        "class RuleException extends RuleExceptionModel",
+                        "{",
+                        "    /**",
+                        "     * @ORM\\Id",
+                        "     * @ORM\\GeneratedValue(strategy=\"IDENTITY\")",
+                        "     * @ORM\\Column(type=\"integer\")",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue(strategy: 'IDENTITY')]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @ORM\\ManyToOne(targetEntity=Rule::class, inversedBy=\"exceptions\")",
+                        "     *",
+                        "     * @var Rule|null",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: Rule::class, inversedBy: 'exceptions')]",
+                        "    protected $rule;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "27abc2a6f615f59da3b654bf37f7ab0a1f1550d3"
+        }
+    }
+}

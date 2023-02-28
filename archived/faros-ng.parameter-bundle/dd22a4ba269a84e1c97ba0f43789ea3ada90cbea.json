@@ -1,9 +1,9 @@
 {
     "manifests": {
-        "faros-ng/security-bundle": {
+        "faros-ng/parameter-bundle": {
             "manifest": {
                 "bundles": {
-                    "Faros\\Bundle\\SecurityBundle\\FarosSecurityBundle": [
+                    "Faros\\Bundle\\ParameterBundle\\FarosParameterBundle": [
                         "all"
                     ]
                 },
@@ -13,32 +13,32 @@
                 }
             },
             "files": {
-                "config/packages/faros_security.yaml": {
+                "config/packages/faros_parameter.yaml": {
                     "contents": [
-                        "faros_security:",
-                        "    login_attempt_class: App\\Entity\\UserLoginAttempt",
-                        "    max_login_attempts: 20",
+                        "faros_parameter:",
+                        "    cache_service: cache.app",
+                        "    parameter_class: App\\Entity\\Parameter",
                         ""
                     ],
                     "executable": false
                 },
-                "src/Entity/UserLoginAttempt.php": {
+                "src/Entity/Parameter.php": {
                     "contents": [
                         "<?php",
                         "",
                         "namespace App\\Entity;",
                         "",
                         "use Doctrine\\ORM\\Mapping as ORM;",
-                        "use Faros\\Bundle\\SecurityBundle\\ORM\\LoginAttemptRepository;",
-                        "use Faros\\Component\\Security\\Model\\LoginAttempt as LoginAttemptModel;",
+                        "use Faros\\Component\\Parameter\\Model\\Parameter as ParameterModel;",
+                        "use Faros\\Bundle\\ParameterBundle\\ORM\\ParameterRepository;",
                         "",
                         "/**",
-                        " * @ORM\\Entity(repositoryClass=LoginAttemptRepository::class)",
-                        " * @ORM\\Table(name=\"faros_login_attempt\")",
+                        " * @ORM\\Entity(repositoryClass=ParameterRepository::class)",
+                        " * @ORM\\Table(name=\"faros_parameter\")",
                         " */",
-                        "#[ORM\\Entity(repositoryClass: LoginAttemptRepository::class)]",
-                        "#[ORM\\Table(name: 'faros_login_attempt')]",
-                        "class UserLoginAttempt extends LoginAttemptModel",
+                        "#[ORM\\Entity(repositoryClass: ParameterRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_parameter')]",
+                        "class Parameter extends ParameterModel",
                         "{",
                         "    /**",
                         "     * @ORM\\Id",
@@ -55,7 +55,7 @@
                     "executable": false
                 }
             },
-            "ref": "78cda73a5f015cdf70fa6a57ef31f5d1547c6c78"
+            "ref": "dd22a4ba269a84e1c97ba0f43789ea3ada90cbea"
         }
     }
 }

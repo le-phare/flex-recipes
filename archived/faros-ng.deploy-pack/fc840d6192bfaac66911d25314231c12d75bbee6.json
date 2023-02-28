@@ -9,6 +9,15 @@
                 "gitignore": [
                     "!ansible/Makefile.mk"
                 ],
+                "post-install-output": [
+                    "<bg=blue;fg=white>                          </>",
+                    "<bg=blue;fg=white> Deployment configuration </>",
+                    "<bg=blue;fg=white>                          </>",
+                    "",
+                    "  * Modify project variables in ansible/_variables.yml </>",
+                    "",
+                    "  * Configure each environment ansible/<env>/group_vars/app/vars </>"
+                ],
                 "makefile": [
                     "SF = docker-compose run --rm php bin/console",
                     "COMPOSER = docker-compose run --rm php composer",
@@ -34,15 +43,6 @@
                     "",
                     "watch:",
                     "\t$(NPM) run watch"
-                ],
-                "post-install-output": [
-                    "<bg=blue;fg=white>                          </>",
-                    "<bg=blue;fg=white> Deployment configuration </>",
-                    "<bg=blue;fg=white>                          </>",
-                    "",
-                    "  * Modify project variables in ansible/_variables.yml </>",
-                    "",
-                    "  * Configure each environment ansible/<env>/group_vars/app/vars </>"
                 ]
             },
             "files": {
