@@ -33,7 +33,7 @@ class OrderItem extends FarosOrderItem
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Order", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="items")
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      *
      * @var Order
@@ -43,7 +43,7 @@ class OrderItem extends FarosOrderItem
     protected $order;
 
     /**
-     * @ORM\OneToMany(targetEntity="Adjustment", mappedBy="orderItem", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Adjustment::class, mappedBy="orderItem", orphanRemoval=true, cascade={"persist"})
      *
      * @var Collection<int, Adjustment>
      */
@@ -51,7 +51,7 @@ class OrderItem extends FarosOrderItem
     protected $adjustments;
 
     /**
-     * @ORM\OneToMany(targetEntity="OrderItemUnit", mappedBy="orderItem", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=OrderItemUnit::class, mappedBy="orderItem", orphanRemoval=true, cascade={"persist"})
      *
      * @var Collection<int, OrderItemUnit>
      */
