@@ -7,3 +7,17 @@ doctrine:
     dbal:
         types:
             event_log_status: Faros\Component\EventLog\Types\EventLogStatusType
+
+monolog:
+    channels: ['faros_event_log']
+    handlers:
+        faros_event_log_buffer:
+            type: buffer
+            handler: event_log_dbal_handler
+            channels: [ "faros_event_log" ]
+            level: debug
+        event_log_dbal_handler:
+            type: service
+            id: "faros_event_log.doctrine_handler"
+            level: debug
+            channels: [ "faros_event_log" ]
