@@ -2,6 +2,7 @@ imports:
     - { resource: roles.yaml }
 
 security:
+    enable_authenticator_manager: true
     # hide_user_not_found: false # true by default, if set to false will show "locked" or "not found" user error
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
