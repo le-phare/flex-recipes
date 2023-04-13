@@ -1,9 +1,0 @@
-# deploy variables
-ansible_user: <remote_ssh_user>
-ansistrano_deploy_to: <remote_deploy_dir>
-lephare_default_git_branch: master
-application_environment: prod
-
-# db-pull variables
-db_pull_remote_database_name: <remote_database_name>
-db_pull_remote_database_user: <remote_database_user>
