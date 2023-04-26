@@ -17,6 +17,12 @@ return (new PhpCsFixer\Config())
         'ordered_imports' => [
             'sort_algorithm' => 'alpha',
         ],
+        'multiline_whitespace_before_semicolons' => [
+            'strategy' => 'new_line_for_chained_calls',
+        ],
+        'phpdoc_separation' => [
+            'groups' => [['ORM\\*'], ['Assert\\*']],
+        ]
     ])
     ->setFinder($finder)
     ->setCacheFile('.php-cs-fixer.cache') // forward compatibility with 3.x line
