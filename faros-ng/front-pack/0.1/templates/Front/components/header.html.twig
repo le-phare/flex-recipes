@@ -1,0 +1,25 @@
+<header id="header" class="position-sticky top-0 left-0 bg-primary zi-2">
+    <div class="container py-3 py-md-4">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <p class="site-title h1 fw-bold text-white mb-0">
+                <a href="{{ path('front_home') }}" class="text-white text-decoration-none">Faros</a>
+            </p>
+            <button class="btn text-white bg-secondary p-3 lh-1" data-action="toggle-menu">
+                <i class="fa-solid fa-burger"></i>
+                <span class="visually-hidden">Menu</span>
+            </button>
+        </div>
+    </div><!-- .container -->
+</header><!-- #header -->
+<div id="menu">
+    <nav class="navbar flex-column align-items-start justify-content-start">
+        <ul class="navbar-nav">
+            {% for i in 1..6 %}
+                <li class="nav-item">
+                    <a href="" class="nav-link">Menu item #{{i}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="menu-mask" data-action="toggle-menu"></div>
+</div><!-- #menu -->

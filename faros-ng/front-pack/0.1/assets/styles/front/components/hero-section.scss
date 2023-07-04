@@ -1,0 +1,13 @@
+.hero-section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    &.hero-section-parallax {
+        background-attachment: fixed;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, 'lg')) {
+        min-height: 80vh;
+    }
+}

@@ -1,0 +1,50 @@
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 99999;
+
+    nav {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 33%;
+        height: 100%;
+        min-width: 320px;
+        background: $white;
+        overflow-y: auto;
+        padding: 1.5rem;
+        transition: all .3s ease;
+        z-index: 2;
+    }
+
+    .menu-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $dark;
+        opacity: 0;
+        transition: all .3s ease .15s;
+        z-index: 1;
+    }
+
+    &.visible {
+        visibility: visible;
+
+        nav {
+            left: 0;
+            transition: all .3s ease .15s;
+        }
+
+        .menu-mask {
+            opacity: 0.9;
+            transition: all .3s ease;
+        }
+    }
+}
