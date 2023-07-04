@@ -1,0 +1,11 @@
+{
+  "copy-from-recipe": {
+    "webpack.config.js": "webpack.config.js",
+    "package.json": "package.json",
+    "assets/": "assets/",
+    "templates/Front/": "templates/Front/"
+  },
+  "gitignore": [
+    ".DS_Store"
+  ]
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Faros{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('front') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        {{ encore_entry_script_tags('front') }}
+    {% endblock %}
+
+</head>
+    <body>
+        <div id="app">
+            {% block layout %}
+                <div id="page">
+                    {% include 'Front/components/header.html.twig' %}
+                    
+                    <div id="content">
+                        <div class="hero-section d-flex align-items-center py-8" style="background-image: url(https://picsum.photos/1920/1080);">
+                            <div class="container py-3 py-md-4 py-lg-5">
+                                <div class="row">
+                                    <div class="col-lg-8 col-xl-6 col-xxl-5 text-white">
+                                        <h1 class="display-1 fw-bold">Titre</h1>
+                                        <p class="fs-4 fw-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices, erat a pretium tempus, est diam cursus metus, id fringilla dui ante vitae neque.</p>
+                                        <a href="" class="btn btn-secondary text-white">Button</a>
+                                    </div>
+                                </div>
+                            </div><!-- .container -->
+                        </div>
+                        <div class="container py-3 py-md-4 py-lg-5 py-xl-8">
+                            <default-component></default-component>
+                        </div><!-- .container -->
+                    </div><!-- #content -->
+                    
+                    {% include 'Front/components/footer.html.twig' %}
+                </div><!-- #page -->
+            {% endblock layout %}
+        </div>
+    </body>
+</html>
