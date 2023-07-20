@@ -4,7 +4,6 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 
 | Package | Latest Recipe |
 | --- | --- |
-| [doctrine/doctrine-bundle](https://packagist.org/packages/doctrine/doctrine-bundle) | [1.6](doctrine/doctrine-bundle/1.6) |
 | [faros-ng/admin-bundle](https://packagist.org/packages/faros-ng/admin-bundle) | [2.0](faros-ng/admin-bundle/2.0) |
 | [faros-ng/code-quality-pack](https://packagist.org/packages/faros-ng/code-quality-pack) | [2.2](faros-ng/code-quality-pack/2.2) |
 | [faros-ng/currency-bundle](https://packagist.org/packages/faros-ng/currency-bundle) | [1.20](faros-ng/currency-bundle/1.20) |

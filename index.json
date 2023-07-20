@@ -1,9 +1,6 @@
 {
     "aliases": [],
     "recipes": {
-        "doctrine/doctrine-bundle": [
-            "1.6"
-        ],
         "faros-ng/admin-bundle": [
             "0.1",
             "1.7",
