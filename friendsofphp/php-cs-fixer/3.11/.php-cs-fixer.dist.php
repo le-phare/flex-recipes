@@ -7,12 +7,12 @@ $finder = PhpCsFixer\Finder::create()
 ;
 
 return (new PhpCsFixer\Config())
-    ->setRiskyAllowed(true)
+// ->setRiskyAllowed(true)                              // Nouveau projet ? => Décommenter
     ->setRules([
         '@PhpCsFixer' => true,
-        '@PhpCsFixer:risky' => true,
+        // '@PhpCsFixer:risky' => true,                 // Nouveau projet ? => Décommenter
         '@Symfony' => true,
-        '@Symfony:risky' => true,
+        // '@Symfony:risky' => true,                    // Nouveau projet ? => Décommenter
         '@DoctrineAnnotation' => true,
         'phpdoc_separation' => [
             'groups' => [['ORM\\*'], ['Assert\\*']],
