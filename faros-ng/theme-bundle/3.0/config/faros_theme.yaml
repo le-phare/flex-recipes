@@ -1,0 +1,4 @@
+faros_theme:
+    layout: '@FarosAdmin/layout'
+    mode:
+        default: 'dark'
