@@ -61,6 +61,9 @@
             "1.7",
             "1.20"
         ],
+        "faros-ng/theme-bundle": [
+            "3.0"
+        ],
         "faros-ng/user-bundle": [
             "0.1",
             "1.18",

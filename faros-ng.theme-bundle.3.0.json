@@ -1,0 +1,29 @@
+{
+    "manifests": {
+        "faros-ng/theme-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\ThemeBundle\\FarosThemeBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/faros_theme.yaml": {
+                    "contents": [
+                        "faros_theme:",
+                        "    layout: '@FarosAdmin/layout'",
+                        "    mode:",
+                        "        default: 'dark'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "152d26dc6e5df92b3cb8e540fd8765bd0bbd6a7f"
+        }
+    }
+}
