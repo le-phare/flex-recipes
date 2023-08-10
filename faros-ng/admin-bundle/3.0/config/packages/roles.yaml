@@ -8,6 +8,7 @@ security:
             - ROLE_ADMIN_USER
             - ROLE_ADMIN_GROUP
             - ROLE_ADMIN_ACTION
+            - ROLE_ADMIN_MEDIA
 
 imports:
     - { resource: "@FarosAdminBundle/Resources/config/role/core.yml" }
