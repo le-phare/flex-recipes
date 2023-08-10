@@ -5,4 +5,4 @@ twig:
     globals:
         project:
             name: Faros
-            logo: /bundles/farosadmin/themes/avant/img/logo-faros.png
+            logo: /bundles/farostheme/img/logo-faros.png
