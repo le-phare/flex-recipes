@@ -28,7 +28,8 @@
         "faros-ng/docker-pack": [
             "0.1",
             "2.0",
-            "2.1"
+            "2.1",
+            "2.2"
         ],
         "faros-ng/event-log-bundle": [
             "0.1",
