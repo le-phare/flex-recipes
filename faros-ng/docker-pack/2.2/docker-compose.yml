@@ -1,6 +1,6 @@
 services:
     php:
-        image: lephare/php:8.1
+        image: lephare/php:8.2
         volumes:
             - ./:/var/www/symfony
         environment:
