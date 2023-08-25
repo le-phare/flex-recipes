@@ -1,0 +1,31 @@
+services:
+    php:
+        image: lephare/php:8.2
+        volumes:
+            - ./:/var/www/symfony
+        environment:
+            SYMFONY_DEPRECATIONS_HELPER: "max[direct]=0&verbose=1"
+        networks:
+            - default
+            - private
+    web:
+        image: lephare/apache:2.4
+        networks:
+            - default
+            - public
+        volumes:
+            - ./:/var/www/symfony
+        labels:
+            caddy: 'project.${DOCKER_HOST_SUFFIX:-local}'
+            caddy.tls: internal
+            caddy.reverse_proxy: '{{ upstreams }}'
+        environment:
+            DOCUMENT_ROOT: /var/www/symfony/public
+
+networks:
+    private:
+        external: true
+        name: dev_private
+    public:
+        external: true
+        name: dev_public
