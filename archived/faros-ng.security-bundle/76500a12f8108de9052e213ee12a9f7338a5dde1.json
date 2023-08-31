@@ -1,0 +1,55 @@
+{
+    "manifests": {
+        "faros-ng/security-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\SecurityBundle\\FarosSecurityBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_security.yaml": {
+                    "contents": [
+                        "faros_security:",
+                        "    login_attempt_class: App\\Entity\\UserLoginAttempt",
+                        "    max_login_attempts: 20",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UserLoginAttempt.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\SecurityBundle\\ORM\\LoginAttemptRepository;",
+                        "use Faros\\Component\\Security\\Model\\LoginAttempt as LoginAttemptModel;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: LoginAttemptRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_login_attempt')]",
+                        "class UserLoginAttempt extends LoginAttemptModel",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "76500a12f8108de9052e213ee12a9f7338a5dde1"
+        }
+    }
+}

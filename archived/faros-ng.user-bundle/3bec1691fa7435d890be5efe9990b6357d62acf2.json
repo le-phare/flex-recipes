@@ -1,0 +1,154 @@
+{
+    "manifests": {
+        "faros-ng/user-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\UserBundle\\FarosUserBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_user.yaml": {
+                    "contents": [
+                        "faros_user:",
+                        "    action_class: App\\Entity\\UserAction",
+                        "    group_class: App\\Entity\\Group",
+                        "    user_class: App\\Entity\\User",
+                        "",
+                        "monolog:",
+                        "    channels:",
+                        "        - faros_action",
+                        "    handlers:",
+                        "        faros_action_buffer:",
+                        "            type: buffer",
+                        "            handler: dbal_handler",
+                        "            channels:",
+                        "                - faros_action",
+                        "        dbal_handler:",
+                        "            type: service",
+                        "            id: \"faros_user.doctrine_handler\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Group.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\User\\Model\\Group as GroupModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'faros_group')]",
+                        "class Group extends GroupModel",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<int, User>",
+                        "     */",
+                        "    #[ORM\\ManyToMany(targetEntity: User::class, inversedBy: 'groups')]",
+                        "    #[ORM\\JoinTable(name: 'faros_group_member')]",
+                        "    protected $users;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/User.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\UserBundle\\Repository\\UserRepository;",
+                        "use Faros\\Component\\User\\Model\\User as UserModel;",
+                        "use Symfony\\Component\\Security\\Core\\User\\UserInterface;",
+                        "",
+                        "/**",
+                        " * @ORM\\Entity(repositoryClass=UserRepository::class)",
+                        " * @ORM\\Table(name=\"faros_user\")",
+                        " */",
+                        "#[ORM\\Entity(repositoryClass: UserRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_user')]",
+                        "class User extends UserModel implements UserInterface",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<int, Group>",
+                        "     */",
+                        "    #[ORM\\ManyToMany(targetEntity: Group::class, mappedBy: 'users')]",
+                        "    protected $groups;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/UserAction.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\UserBundle\\Repository\\ActionRepository;",
+                        "use Faros\\Component\\User\\Model\\Action as ActionModel;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ActionRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_user_action')]",
+                        "class UserAction extends ActionModel",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var User",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: User::class)]",
+                        "    #[ORM\\JoinColumn(nullable: false)]",
+                        "    protected $user;",
+                        "",
+                        "    /**",
+                        "     * @var User|null",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: User::class)]",
+                        "    #[ORM\\JoinColumn(nullable: true)]",
+                        "    protected $impersonatedUser;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "3bec1691fa7435d890be5efe9990b6357d62acf2"
+        }
+    }
+}
