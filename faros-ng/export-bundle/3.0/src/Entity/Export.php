@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Component\Export\Model\Export as ExportModel;
 use Faros\Bundle\ExportBundle\ORM\ExportRepository;
@@ -17,4 +18,10 @@ class Export extends ExportModel
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     protected $id;
+
+    /**
+     * @var Collection<int, Group>
+     */
+    #[ORM\ManyToMany(targetEntity: Group::class)]
+    protected $groups;
 }
