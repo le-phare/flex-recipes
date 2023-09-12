@@ -23,6 +23,7 @@ lephare_composer_options: "--no-dev --optimize-autoloader --apcu-autoloader --no
 lephare_crontab_path: "{{ ansistrano_release_path.stdout }}/.crontab"
 lephare_crontab_install: true
 lephare_install_adminer: false
+lephare_packagist_com_token: "{{ vault_lephare_packagist_com_token }}"
 
 # (db-pull) Database settings
 db_pull_local_database_host: <local_database_host>
