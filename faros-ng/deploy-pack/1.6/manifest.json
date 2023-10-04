@@ -1,0 +1,8 @@
+{
+    "copy-from-recipe": {
+        "ansible/": "ansible/"
+    },
+    "gitignore": [
+        "!ansible/Makefile.mk"
+    ]
+}
