@@ -9,6 +9,10 @@ use Faros\Component\EventLog\Traits\TimestampableImmutableEntity;
 use Faros\Bundle\EventLogBundle\Repository\TagRepository;
 use Gedmo\Blameable\Traits\BlameableEntity;
 
+/**
+ * @ORM\Entity(repositoryClass=TagRepository::class)
+ * @ORM\Table(name="event_log_tag")
+ */
 #[ORM\Entity(repositoryClass: TagRepository::class)]
 #[ORM\Table(name: 'event_log_tag')]
 class Tag extends TagModel implements TagInterface
@@ -17,7 +21,9 @@ class Tag extends TagModel implements TagInterface
     use TimestampableImmutableEntity;
 
     /**
-     * @var int|null
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
