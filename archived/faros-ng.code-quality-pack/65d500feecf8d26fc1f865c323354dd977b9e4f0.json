@@ -1,0 +1,116 @@
+{
+    "manifests": {
+        "faros-ng/code-quality-pack": {
+            "manifest": {
+                "copy-from-recipe": {
+                    ".editorconfig": ".editorconfig",
+                    ".php-cs-fixer.dist.php": ".php-cs-fixer.dist.php",
+                    "phpstan.neon.dist": "phpstan.neon.dist",
+                    "tests/object-manager.php": "tests/object-manager.php"
+                },
+                "gitignore": [
+                    "phpstan.neon",
+                    ".php-cs-fixer.cache"
+                ]
+            },
+            "files": {
+                ".editorconfig": {
+                    "contents": [
+                        "root = true",
+                        "",
+                        "[*]",
+                        "indent_style = space",
+                        "indent_size = 4",
+                        "end_of_line = lf",
+                        "charset = utf-8",
+                        "trim_trailing_whitespace = true",
+                        "insert_final_newline = true",
+                        "",
+                        "[*.{js,json,vue,css,less,scss}]",
+                        "indent_size = 2",
+                        "",
+                        "[Makefile]",
+                        "indent_style = tab",
+                        "",
+                        "[*.md]",
+                        "max_line_length = 80",
+                        ""
+                    ],
+                    "executable": false
+                },
+                ".php-cs-fixer.dist.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "$finder = PhpCsFixer\\Finder::create()",
+                        "    ->in(__DIR__.'/src')",
+                        "    ->in(__DIR__.'/migrations')",
+                        "    ->in(__DIR__.'/tests')",
+                        ";",
+                        "",
+                        "return (new PhpCsFixer\\Config())",
+                        "    ->setRules([",
+                        "        '@Symfony' => true,",
+                        "        '@DoctrineAnnotation' => true,",
+                        "        'no_unused_imports' => true,",
+                        "        'array_syntax' => [",
+                        "            'syntax' => 'short',",
+                        "        ],",
+                        "        'ordered_imports' => [",
+                        "            'sort_algorithm' => 'alpha',",
+                        "        ],",
+                        "        'multiline_whitespace_before_semicolons' => [",
+                        "            'strategy' => 'new_line_for_chained_calls',",
+                        "        ],",
+                        "        'phpdoc_separation' => [",
+                        "            'groups' => [['ORM\\\\*'], ['Assert\\\\*']],",
+                        "        ]",
+                        "    ])",
+                        "    ->setFinder($finder)",
+                        "    ->setCacheFile('.php-cs-fixer.cache') // forward compatibility with 3.x line",
+                        ";",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "phpstan.neon.dist": {
+                    "contents": [
+                        "# Config Phpstan",
+                        "",
+                        "parameters:",
+                        "    level: 5",
+                        "    paths:",
+                        "        - src",
+                        "        - migrations",
+                        "",
+                        "    tmpDir: var/phpstan",
+                        "",
+                        "    doctrine:",
+                        "        objectManagerLoader: tests/object-manager.php",
+                        "",
+                        "    symfony:",
+                        "        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "tests/object-manager.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "use App\\Kernel;",
+                        "",
+                        "require __DIR__.'/../config/bootstrap.php';",
+                        "$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);",
+                        "$kernel->boot();",
+                        "",
+                        "return $kernel->getContainer()->get('doctrine')->getManager();",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "65d500feecf8d26fc1f865c323354dd977b9e4f0"
+        }
+    }
+}
