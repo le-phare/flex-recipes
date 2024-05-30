@@ -1,0 +1,7 @@
+<bg=blue;fg=white>              </>
+<bg=blue;fg=white> What's next? </>
+<bg=blue;fg=white>              </>
+
+  * <fg=blue>Update</> your database schema:
+    1. <comment>php bin/console doctrine:migrations:diff</comment>
+    2. <comment>php bin/console doctrine:migrations:migrate</comment>
