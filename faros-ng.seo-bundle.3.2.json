@@ -1,0 +1,142 @@
+{
+    "manifests": {
+        "faros-ng/seo-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\SeoBundle\\FarosSeoBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                },
+                "post-install-output": [
+                    "<bg=blue;fg=white>              </>",
+                    "<bg=blue;fg=white> What's next? </>",
+                    "<bg=blue;fg=white>              </>",
+                    "",
+                    "  * <fg=blue>Update</> your database schema:",
+                    "    1. <comment>php bin/console doctrine:migrations:diff</comment>",
+                    "    2. <comment>php bin/console doctrine:migrations:migrate</comment>"
+                ]
+            },
+            "files": {
+                "config/packages/faros_seo.yaml": {
+                    "contents": [
+                        "faros_seo:",
+                        "    redirection:",
+                        "        enable: true",
+                        "        exclude_patterns:",
+                        "            - ^/admin",
+                        "            - ^/api",
+                        "            - ^/assets",
+                        "            - ^/bundles",
+                        "            - ^/build",
+                        "            - ^/translations",
+                        "            - ^/js",
+                        "            - ^/image",
+                        "            - ^/media",
+                        "            - ^/_profiler",
+                        "    rewrite_redirect: false",
+                        "    redirection_class: App\\Entity\\Seo\\Redirection",
+                        "    rule_class: App\\Entity\\Seo\\Rule",
+                        "    rule_exception_class: App\\Entity\\Seo\\RuleException",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Seo/Redirection.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Seo;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\SeoBundle\\Repository\\RedirectionRepository;",
+                        "use Faros\\Component\\Seo\\Model\\Redirection as RedirectionModel;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: RedirectionRepository::class)]",
+                        "#[ORM\\Table(name: 'seo_redirection')]",
+                        "class Redirection extends RedirectionModel",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Seo/Rule.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Seo;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Seo\\Model\\Rule as RuleModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'seo_rule')]",
+                        "class Rule extends RuleModel",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<int, RuleException>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: RuleException::class, mappedBy: 'rule')]",
+                        "    protected $exceptions;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Seo/RuleException.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Seo;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Seo\\Model\\RuleException as RuleExceptionModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'seo_rule_exception')]",
+                        "class RuleException extends RuleExceptionModel",
+                        "{",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Rule|null",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: Rule::class, inversedBy: 'exceptions')]",
+                        "    protected $rule;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "d721f0f440306ea5295410a82017cb49a8cec4b3"
+        }
+    }
+}

@@ -16,7 +16,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/order-bundle](https://packagist.org/packages/faros-ng/order-bundle) | [3.0](faros-ng/order-bundle/3.0) |
 | [faros-ng/parameter-bundle](https://packagist.org/packages/faros-ng/parameter-bundle) | [3.0](faros-ng/parameter-bundle/3.0) |
 | [faros-ng/security-bundle](https://packagist.org/packages/faros-ng/security-bundle) | [3.0](faros-ng/security-bundle/3.0) |
-| [faros-ng/seo-bundle](https://packagist.org/packages/faros-ng/seo-bundle) | [3.0](faros-ng/seo-bundle/3.0) |
+| [faros-ng/seo-bundle](https://packagist.org/packages/faros-ng/seo-bundle) | [3.2](faros-ng/seo-bundle/3.2) |
 | [faros-ng/theme-bundle](https://packagist.org/packages/faros-ng/theme-bundle) | [3.0](faros-ng/theme-bundle/3.0) |
 | [faros-ng/user-bundle](https://packagist.org/packages/faros-ng/user-bundle) | [3.0](faros-ng/user-bundle/3.0) |
 | [faros-ng/user-feedback-bundle](https://packagist.org/packages/faros-ng/user-feedback-bundle) | [0.1](faros-ng/user-feedback-bundle/0.1) |
