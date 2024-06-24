@@ -1,0 +1,68 @@
+#!/bin/sh
+
+_docker_exec()
+{
+    if [ "$(uname -s)" != "Darwin" ]; then
+        docker exec -it -u "$(id -u):$(id -g)" "$@"
+    else
+        docker exec -it "$@"
+    fi
+}
+
+_docker_run()
+{
+    if [ "$(uname -s)" != "Darwin" ]; then
+        docker run --rm -it -u "$(id -u):$(id -g)" "$@"
+    else
+        docker run --rm -it "$@"
+    fi
+}
+
+_docker_compose_exec()
+{
+    if [ "$(uname -s)" != "Darwin" ]; then
+        docker compose exec -it -u "$(id -u):$(id -g)" "$@"
+    else
+        docker compose exec -it "$@"
+    fi
+}
+
+_docker_compose_run()
+{
+    if [ "$(uname -s)" != "Darwin" ]; then
+        docker compose run --rm -it -u "$(id -u):$(id -g)" "$@"
+    else
+        docker compose run --rm -it "$@"
+    fi
+}
+
+_docker_compose_run_php() {
+    _docker_compose_run -v "${COMPOSER_HOME:-$HOME/.composer}":/tmp/composer -e COMPOSER_HOME=/tmp/composer php "$@"
+}
+
+_docker_run_node() {
+    touch "$HOME/.npmrc"
+    _docker_run -e "HOME=/home/node" -v "$PWD:/app" -v "$HOME/.npmrc:/home/node/.npmrc" -w /app node:20-slim "$@"
+}
+
+composer() {
+    _docker_compose_run_php php /usr/local/bin/composer "$@"
+}
+
+npm() {
+    _docker_run_node npm "$@"
+}
+
+php() {
+    _docker_compose_run_php php "$@"
+}
+
+sf() {
+    _docker_compose_run_php php bin/console "$@"
+}
+
+yarn() {
+    echo "Ce projet utilise npm."
+}
+
+echo composer npm php sf yarn
