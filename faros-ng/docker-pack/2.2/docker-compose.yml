@@ -1,20 +1,24 @@
 services:
     php:
-        image: lephare/php:8.2
+        image: lephare/php:8.3
         volumes:
             - ./:/var/www/symfony
+            - ${COMPOSER_HOME:-~/.composer}:/tmp/composer
         environment:
+            COMPOSER_HOME: /tmp/composer
+            DOCKER_HOST_SUFFIX: ${DOCKER_HOST_SUFFIX:-local}
             SYMFONY_DEPRECATIONS_HELPER: "max[direct]=0&verbose=1"
         networks:
             - default
             - private
+
     web:
         image: lephare/apache:2.4
         networks:
             - default
             - public
-        volumes:
-            - ./:/var/www/symfony
+        volumes_from:
+            - php:ro
         labels:
             caddy: 'project.${DOCKER_HOST_SUFFIX:-local}'
             caddy.tls: internal
