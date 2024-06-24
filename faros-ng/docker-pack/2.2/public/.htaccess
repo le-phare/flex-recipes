@@ -18,10 +18,6 @@ DirectoryIndex index.php
    ExpiresByType application/x-font-woff "access plus 10 years"
 </IfModule>
 
-<filesMatch ".(svg)$">
-AddOutputFilterByType DEFLATE image/svg+xml
-</filesMatch>
-
 <filesMatch ".(svg|woff2|woff)$">
 ExpiresDefault "access plus 10 years"
 FileETag None
