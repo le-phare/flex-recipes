@@ -34,6 +34,11 @@ REMOTE_SSH_PORT = $(shell awk -F': ' '/ansible_port/ { print $$2 }' $(ansible_va
 REMOTE_SSH_PORT := $(if $(REMOTE_SSH_PORT),$(REMOTE_SSH_PORT),22)
 REMOTE_SSH = $(REMOTE_SSH_USER)@$(REMOTE_SSH_HOST) -p $(REMOTE_SSH_PORT)
 
+# Needed for Docker Desktop (Docker for Mac for example), see https://docs.docker.com/desktop/networking/#ssh-agent-forwarding
+ifeq ($(UNAME_S),Darwin)
+	SSH_AUTH_SOCK = /run/host-services/ssh-auth.sock
+endif
+
 database_container := $(shell awk -F': ' '/db_pull_local_database_host/ { print $$2 }' $(current_dir)/_variables.yml | xargs -I{} docker ps -fname={} -q )
 database_network := $(shell docker inspect $(database_container) -f {{.HostConfig.NetworkMode}} 2> /dev/null | uniq)
 
