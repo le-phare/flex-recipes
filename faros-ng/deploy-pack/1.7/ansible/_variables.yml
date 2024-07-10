@@ -1,0 +1,39 @@
+# (ansistrano) Deployment settings
+ansistrano_git_repo: <git_repository>
+ansible_ssh_common_args: " -o ForwardAgent=yes"
+ansistrano_shared_files:
+    - .env.local
+ansistrano_shared_paths:
+    - var/log
+    - var/database
+    - var/exchange
+    - public/build
+
+# (ansible-deploy) Deployment settings
+lephare_sentry_project: <sentry_project>
+lephare_http_basic_user: <admin_user>
+lephare_http_basic_password: <admin_password>
+lephare_sentry_notify: true
+lephare_sentry_token: <sentry api token>
+lephare_assets_build_path: "../public/build/"
+lephare_assets_web_path: "build/"
+lephare_assets_publish: false
+lephare_document_root_path: "{{ ansistrano_release_path.stdout }}/public"
+lephare_composer_options: "--no-dev --optimize-autoloader --apcu-autoloader --no-interaction"
+lephare_crontab_path: "{{ ansistrano_release_path.stdout }}/.crontab"
+lephare_crontab_install: true
+lephare_install_adminer: false
+lephare_packagist_com_token: "{{ vault_lephare_packagist_com_token }}"
+
+# (db-pull) Database settings
+db_pull_local_database_host: <local_database_host>
+db_pull_local_database_name: <local_database_name>
+db_pull_local_database_user: <local_database_user>
+db_pull_local_database_password: <local_database_password>
+db_pull_local_database_port: <local_database_port> # MySQL/MariaDB: 3306, PostgreSQL: 5432
+
+db_pull_local_backup_path: ../var/database/
+db_pull_remote_backup_path: "{{ ansistrano_deploy_to }}/var/database"
+db_pull_remote_database_host: localhost
+db_pull_remote_database_port: 5432
+db_pull_remote_database_password: "{{ vault_database_password }}"

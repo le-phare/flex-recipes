@@ -1,0 +1,13 @@
+# deploy variables
+ansible_user: <remote_ssh_user>
+ansible_host: <remote_ssh_host>
+ansistrano_deploy_to: <remote_deploy_dir>
+application_environment: preprod
+lephare_default_git_branch: develop
+lephare_http_basic_secure: true
+lephare_prevent_robots_indexation: true
+
+# db-pull variables
+db_pull_remote_database_name: <remote_database_name>
+db_pull_remote_database_user: <remote_database_user>
+
