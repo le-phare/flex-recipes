@@ -6,6 +6,15 @@
                     "ansible/": "ansible/",
                     "Makefile": "Makefile"
                 },
+                "post-install-output": [
+                    "<bg=blue;fg=white>                          </>",
+                    "<bg=blue;fg=white> Deployment configuration </>",
+                    "<bg=blue;fg=white>                          </>",
+                    "",
+                    "  * Modify project variables in ansible/_variables.yml </>",
+                    "",
+                    "  * Configure each environment ansible/<env>/group_vars/app/vars </>"
+                ],
                 "makefile": [
                     "SF = docker-compose run --rm php bin/console",
                     "COMPOSER = docker-compose run --rm php composer",
@@ -31,15 +40,6 @@
                     "",
                     "watch:",
                     "\t$(NPM) run watch"
-                ],
-                "post-install-output": [
-                    "<bg=blue;fg=white>                          </>",
-                    "<bg=blue;fg=white> Deployment configuration </>",
-                    "<bg=blue;fg=white>                          </>",
-                    "",
-                    "  * Modify project variables in ansible/_variables.yml </>",
-                    "",
-                    "  * Configure each environment ansible/<env>/group_vars/app/vars </>"
                 ]
             },
             "files": {
@@ -80,11 +80,6 @@
                         "REMOTE_SSH_PORT = $(shell awk -F': ' '/ansible_port/ { print $$2 }' $(ansible_vars))",
                         "REMOTE_SSH_PORT := $(if $(REMOTE_SSH_PORT),$(REMOTE_SSH_PORT),22)",
                         "REMOTE_SSH = $(REMOTE_SSH_USER)@$(REMOTE_SSH_HOST) -p $(REMOTE_SSH_PORT)",
-                        "",
-                        "# Needed for Docker Desktop (Docker for Mac for example), see https://docs.docker.com/desktop/networking/#ssh-agent-forwarding",
-                        "ifeq ($(UNAME_S),Darwin)",
-                        "\tSSH_AUTH_SOCK = /run/host-services/ssh-auth.sock",
-                        "endif",
                         "",
                         "database_container := $(shell awk -F': ' '/db_pull_local_database_host/ { print $$2 }' $(current_dir)/_variables.yml | xargs -I{} docker ps -fname={} -q )",
                         "database_network := $(shell docker inspect $(database_container) -f {{.HostConfig.NetworkMode}} 2> /dev/null | uniq)",
@@ -253,7 +248,7 @@
                     "executable": false
                 }
             },
-            "ref": "76d554178b0d6a8d2dca8cefc4c47a28a3c4c327"
+            "ref": "11b299ae30a0cbc499bc879e904f9ba0d895a2d8"
         }
     }
 }
