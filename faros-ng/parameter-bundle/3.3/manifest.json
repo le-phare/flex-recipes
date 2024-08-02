@@ -1,0 +1,9 @@
+{
+    "bundles": {
+        "Faros\\Bundle\\ParameterBundle\\FarosParameterBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/",
+        "src/": "%SRC_DIR%/"
+    }
+}
