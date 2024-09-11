@@ -1,6 +1,5 @@
 {
     "copy-from-recipe": {
-        "ansible/": "ansible/",
-        "Makefile": "Makefile"
+        "ansible/": "ansible/"
     }
 }
