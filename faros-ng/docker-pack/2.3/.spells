@@ -12,9 +12,9 @@ _docker_exec()
 _docker_run()
 {
     if [ "$(uname -s)" != "Darwin" ]; then
-        docker run --rm -it -u "$(id -u):$(id -g)" "$@"
+        docker run --init --rm -it -u "$(id -u):$(id -g)" "$@"
     else
-        docker run --rm -it "$@"
+        docker run --init --rm -it "$@"
     fi
 }
 

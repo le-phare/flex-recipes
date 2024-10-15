@@ -1,0 +1,11 @@
+{
+    "copy-from-recipe": {
+        ".env.dev": ".env.dev",
+        ".spells": ".spells",
+        "docker-compose.yml": "docker-compose.yml",
+        "public/": "%PUBLIC_DIR%/"
+    },
+    "gitignore": [
+        "docker-compose.override.yml"
+    ]
+}
