@@ -8,7 +8,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/code-quality-pack](https://packagist.org/packages/faros-ng/code-quality-pack) | [2.3](faros-ng/code-quality-pack/2.3) |
 | [faros-ng/currency-bundle](https://packagist.org/packages/faros-ng/currency-bundle) | [3.0](faros-ng/currency-bundle/3.0) |
 | [faros-ng/deploy-pack](https://packagist.org/packages/faros-ng/deploy-pack) | [1.7](faros-ng/deploy-pack/1.7) |
-| [faros-ng/docker-pack](https://packagist.org/packages/faros-ng/docker-pack) | [2.2](faros-ng/docker-pack/2.2) |
+| [faros-ng/docker-pack](https://packagist.org/packages/faros-ng/docker-pack) | [2.3](faros-ng/docker-pack/2.3) |
 | [faros-ng/event-log-bundle](https://packagist.org/packages/faros-ng/event-log-bundle) | [3.0](faros-ng/event-log-bundle/3.0) |
 | [faros-ng/export-bundle](https://packagist.org/packages/faros-ng/export-bundle) | [3.0](faros-ng/export-bundle/3.0) |
 | [faros-ng/glide-bundle](https://packagist.org/packages/faros-ng/glide-bundle) | [0.1](faros-ng/glide-bundle/0.1) |

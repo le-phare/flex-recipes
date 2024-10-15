@@ -3,9 +3,10 @@
         "faros-ng/docker-pack": {
             "manifest": {
                 "copy-from-recipe": {
-                    "public/": "%PUBLIC_DIR%/",
+                    ".env.dev": ".env.dev",
+                    ".spells": ".spells",
                     "docker-compose.yml": "docker-compose.yml",
-                    ".env.dev": ".env.dev"
+                    "public/": "%PUBLIC_DIR%/"
                 },
                 "gitignore": [
                     "docker-compose.override.yml"
@@ -29,7 +30,81 @@
                     "contents": [
                         "SENTRY_DSN=",
                         "MAILER_DSN=smtp://maildev:25",
-                        "DATABASE_URL=\"postgres://postgres:root@pgsql_15:5432/project?serverVersion=15&charset=utf8\"",
+                        "DATABASE_URL=\"postgres://postgres:root@pgsql_16:5432/project?serverVersion=16&charset=utf8\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                ".spells": {
+                    "contents": [
+                        "#!/bin/sh",
+                        "",
+                        "_docker_exec()",
+                        "{",
+                        "    if [ \"$(uname -s)\" != \"Darwin\" ]; then",
+                        "        docker exec -it -u \"$(id -u):$(id -g)\" \"$@\"",
+                        "    else",
+                        "        docker exec -it \"$@\"",
+                        "    fi",
+                        "}",
+                        "",
+                        "_docker_run()",
+                        "{",
+                        "    if [ \"$(uname -s)\" != \"Darwin\" ]; then",
+                        "        docker run --init --rm -it -u \"$(id -u):$(id -g)\" \"$@\"",
+                        "    else",
+                        "        docker run --init --rm -it \"$@\"",
+                        "    fi",
+                        "}",
+                        "",
+                        "_docker_compose_exec()",
+                        "{",
+                        "    if [ \"$(uname -s)\" != \"Darwin\" ]; then",
+                        "        docker compose exec -it -u \"$(id -u):$(id -g)\" \"$@\"",
+                        "    else",
+                        "        docker compose exec -it \"$@\"",
+                        "    fi",
+                        "}",
+                        "",
+                        "_docker_compose_run()",
+                        "{",
+                        "    if [ \"$(uname -s)\" != \"Darwin\" ]; then",
+                        "        docker compose run --rm -it -u \"$(id -u):$(id -g)\" \"$@\"",
+                        "    else",
+                        "        docker compose run --rm -it \"$@\"",
+                        "    fi",
+                        "}",
+                        "",
+                        "_docker_compose_run_php() {",
+                        "    _docker_compose_run -v \"${COMPOSER_HOME:-$HOME/.composer}\":/tmp/composer -e COMPOSER_HOME=/tmp/composer php \"$@\"",
+                        "}",
+                        "",
+                        "_docker_run_node() {",
+                        "    touch \"$HOME/.npmrc\"",
+                        "    _docker_run -e \"HOME=/home/node\" -v \"$PWD:/app\" -v \"$HOME/.npmrc:/home/node/.npmrc\" -w /app node:20-slim \"$@\"",
+                        "}",
+                        "",
+                        "composer() {",
+                        "    _docker_compose_run_php php /usr/local/bin/composer \"$@\"",
+                        "}",
+                        "",
+                        "npm() {",
+                        "    _docker_run_node npm \"$@\"",
+                        "}",
+                        "",
+                        "php() {",
+                        "    _docker_compose_run_php php \"$@\"",
+                        "}",
+                        "",
+                        "sf() {",
+                        "    _docker_compose_run_php php bin/console \"$@\"",
+                        "}",
+                        "",
+                        "yarn() {",
+                        "    echo \"Ce projet utilise npm.\"",
+                        "}",
+                        "",
+                        "echo composer npm php sf yarn",
                         ""
                     ],
                     "executable": false
@@ -156,7 +231,7 @@
                     "executable": false
                 }
             },
-            "ref": "9dbbb33e28403ecb8b71351acab7ff710143b048"
+            "ref": "2aec8088cf3f8bd3dc55671ab49c136215192b3e"
         }
     }
 }
