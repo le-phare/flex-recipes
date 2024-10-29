@@ -1,9 +1,9 @@
-SF = docker-compose run --rm php bin/console
-COMPOSER = docker-compose run --rm php composer
+SF = docker compose run --rm php bin/console
+COMPOSER = docker compose run --rm php composer
 NPM = $(DOCKER) node:lts npm
 
 start: install
-	docker-compose up -d
+	docker compose up -d
 	$(SF) do:mi:mi -n
 
 include ansible/Makefile.mk
