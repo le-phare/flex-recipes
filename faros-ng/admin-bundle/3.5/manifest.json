@@ -1,0 +1,10 @@
+{
+    "bundles": {
+        "Faros\\Bundle\\AdminBundle\\FarosAdminBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "fixtures/": "fixtures/",
+        "config/": "%CONFIG_DIR%/",
+        "src/": "%SRC_DIR%/"
+    }
+}
