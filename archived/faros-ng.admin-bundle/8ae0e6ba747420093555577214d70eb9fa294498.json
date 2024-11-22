@@ -1,0 +1,188 @@
+{
+    "manifests": {
+        "faros-ng/admin-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\AdminBundle\\FarosAdminBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "fixtures/": "fixtures/",
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_admin.yaml": {
+                    "contents": [
+                        "faros_admin:",
+                        "    firewalls: [\"main\"]",
+                        "",
+                        "twig:",
+                        "    globals:",
+                        "        project:",
+                        "            name: Faros",
+                        "            logo: /bundles/farostheme/img/logo-faros.png",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/roles.yaml": {
+                    "contents": [
+                        "security:",
+                        "    role_hierarchy:",
+                        "        ROLE_SUPER_ADMIN:",
+                        "            - ROLE_ADMIN",
+                        "            - ROLE_ALLOWED_TO_SWITCH",
+                        "        ROLE_ADMIN:",
+                        "            - ROLE_ADMIN_LOGIN",
+                        "            - ROLE_ADMIN_USER",
+                        "            - ROLE_ADMIN_GROUP",
+                        "            - ROLE_ADMIN_ACTION",
+                        "            - ROLE_ADMIN_MEDIA",
+                        "",
+                        "imports:",
+                        "    - { resource: \"@FarosAdminBundle/Resources/config/role/core.yml\" }",
+                        "    - { resource: \"@FarosAdminBundle/Resources/config/role/elfinder.yml\" }",
+                        "    - { resource: \"@FarosAdminBundle/Resources/config/role/seo.yml\" }",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/packages/security.yaml": {
+                    "contents": [
+                        "imports:",
+                        "    - { resource: roles.yaml }",
+                        "",
+                        "security:",
+                        "    # hide_user_not_found: false # true by default, if set to false will show \"locked\" or \"not found\" user error",
+                        "",
+                        "    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords",
+                        "    password_hashers:",
+                        "        Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface: \"auto\"",
+                        "",
+                        "    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider",
+                        "    providers:",
+                        "        # users_in_memory: { memory: null }",
+                        "        main:",
+                        "            entity:",
+                        "                class: App\\Entity\\User",
+                        "                property: email",
+                        "",
+                        "    firewalls:",
+                        "        dev:",
+                        "            pattern: ^/(_(profiler|wdt)|css|images|js|bundles|assets|build)/",
+                        "            security: false",
+                        "        main:",
+                        "            provider: main",
+                        "            user_checker: \"faros_user.user_checker\"",
+                        "            pattern: ^/",
+                        "            form_login:",
+                        "                username_parameter: email",
+                        "                password_parameter: password",
+                        "                login_path: admin_login",
+                        "                check_path: admin_login",
+                        "",
+                        "            # activate different ways to authenticate",
+                        "            # https://symfony.com/doc/current/security.html#the-firewall",
+                        "",
+                        "            # https://symfony.com/doc/current/security/impersonating_user.html",
+                        "            switch_user:",
+                        "                role: switch_user",
+                        "",
+                        "            # https://symfony.com/doc/current/security.html#limiting-login-attempts",
+                        "            login_throttling:",
+                        "                max_attempts: 10",
+                        "                interval: \"3 minutes\"",
+                        "",
+                        "    access_control:",
+                        "        - { path: ^/translations, roles: PUBLIC_ACCESS }",
+                        "        - { path: ^/login, roles: PUBLIC_ACCESS }",
+                        "        - { path: ^/logout, roles: PUBLIC_ACCESS }",
+                        "        - { path: ^/forgot-password, roles: PUBLIC_ACCESS }",
+                        "        - { path: ^/, role: ROLE_ADMIN }",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/faros_admin.yaml": {
+                    "contents": [
+                        "faros_admin_admin:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/admin.yml\"",
+                        "",
+                        "faros_admin_core:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/core.yml\"",
+                        "",
+                        "faros_admin_export:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/export.yml\"",
+                        "",
+                        "faros_admin_elfinder:",
+                        "    resource: \"@FarosAdminBundle/Resources/config/routing/elfinder.yml\"",
+                        "# faros_admin_seo:",
+                        "#     resource: \"@FarosAdminBundle/Resources/config/routing/seo.yml\"",
+                        "",
+                        "# faros_admin_event_log:",
+                        "#     resource: \"@FarosAdminBundle/Resources/config/routing/event_log.yml\"",
+                        "",
+                        "# faros_admin_scheduled_task:",
+                        "#     resource: \"@FarosAdminBundle/Resources/config/routing/scheduled_task.yml\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "fixtures/faros.yml": {
+                    "contents": [
+                        "App\\Entity\\User:",
+                        "    super-admin:",
+                        "        enabled: \"true\"",
+                        "        firstname: Admin",
+                        "        lastname: Admin",
+                        "        username: admin.project",
+                        "        password: changeme",
+                        "        email: john.doe@example.com",
+                        "        userRoles: [\"ROLE_SUPER_ADMIN\"]",
+                        "",
+                        "App\\Entity\\Group:",
+                        "    group_admin:",
+                        "        roles: [\"ROLE_ADMIN\"]",
+                        "        users: [\"@super-admin\"]",
+                        "        name: Administrateurs",
+                        "",
+                        "App\\Entity\\Parameter:",
+                        "    emails.password_token_interval:",
+                        "        name: emails.password_token_interval",
+                        "        value: 48",
+                        "        description: \"Temps de validit\u00e9 (en heures) du lien de remise \u00e0 z\u00e9ro du mot de passe utilisateur.\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+                        "    emails.noreplyemail:",
+                        "        name: emails.noreplyemail",
+                        "        value: noreply@lephare.com",
+                        "        description: \"Adresse d'exp\u00e9dition des emails envoy\u00e9s par l'application\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "    emails.noreplyname:",
+                        "        name: emails.noreplyname",
+                        "        value: No Reply",
+                        "        description: \"Nom d'exp\u00e9dition des emails envoy\u00e9s par l'application\"",
+                        "        type: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "",
+                        "App\\Entity\\Export:",
+                        "    user_top_connection:",
+                        "        name: user_top_connection",
+                        "        title: Top connexion utilisateurs",
+                        "        description: |",
+                        "            Contient la liste des 100 utilisateurs qui se connectent le plus souvent \u00e0 l'application",
+                        "        sql: |",
+                        "            SELECT u.email, COUNT(DISTINCT a.id)",
+                        "            FROM faros_user_action a",
+                        "            INNER JOIN _user u ON (a.user_id = u.id)",
+                        "            WHERE a.name = 'admin.login'",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "8ae0e6ba747420093555577214d70eb9fa294498"
+        }
+    }
+}
