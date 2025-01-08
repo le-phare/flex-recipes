@@ -1,0 +1,151 @@
+{
+    "manifests": {
+        "faros-ng/basedoc-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\BasedocBundle\\FarosBasedocBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_basedoc.yaml": {
+                    "contents": [
+                        "faros_basedoc:",
+                        "    folder_class: App\\Entity\\Basedoc\\Folder",
+                        "    document_class: App\\Entity\\Basedoc\\Document",
+                        "",
+                        "flysystem:",
+                        "    storages:",
+                        "        basedoc:",
+                        "            adapter: 'local'",
+                        "            options:",
+                        "                directory: '%kernel.project_dir%/var/basedoc'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Basedoc/Document.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Basedoc;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\ArrayCollection;",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\BasedocBundle\\Repository\\DocumentRepository;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "use Symfony\\Component\\Serializer\\Attribute\\Groups;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: DocumentRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_basedoc_document')]",
+                        "class Document extends \\Faros\\Bundle\\BasedocBundle\\Entity\\Document",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<Folder>",
+                        "     */",
+                        "    #[ORM\\JoinTable(name: 'faros_basedoc_folder_document')]",
+                        "    #[ORM\\InverseJoinColumn(name: 'folder_id', referencedColumnName: 'id')]",
+                        "    #[ORM\\ManyToMany(targetEntity: Folder::class, inversedBy: 'documents')]",
+                        "    protected Collection $folders;",
+                        "",
+                        "    public function __construct()",
+                        "    {",
+                        "        parent::__construct();",
+                        "        $this->folders = new ArrayCollection();",
+                        "    }",
+                        "",
+                        "    #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]",
+                        "    public function getCreatedAt(): ?\\DateTimeInterface",
+                        "    {",
+                        "        return $this->createdAt;",
+                        "    }",
+                        "",
+                        "    #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]",
+                        "    public function getUpdatedAt(): ?\\DateTimeInterface",
+                        "    {",
+                        "        return $this->updatedAt;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Basedoc/Folder.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Basedoc;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\ArrayCollection;",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\BasedocBundle\\Entity\\FolderInterface;",
+                        "use Faros\\Bundle\\BasedocBundle\\Repository\\FolderRepository;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "use Symfony\\Component\\Serializer\\Attribute\\Groups;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: FolderRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_basedoc_folder')]",
+                        "class Folder extends \\Faros\\Bundle\\BasedocBundle\\Entity\\Folder",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<Document>",
+                        "     */",
+                        "    #[ORM\\ManyToMany(targetEntity: Document::class, mappedBy: 'folders')]",
+                        "    #[Groups('basedoc.folder.get')]",
+                        "    protected Collection $documents;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<Folder>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: Folder::class, mappedBy: 'parentFolder', cascade: ['remove'])]",
+                        "    #[Groups('basedoc.folder.get')]",
+                        "    protected Collection $childrenFolders;",
+                        "",
+                        "    /** @var Folder|null */",
+                        "    #[ORM\\ManyToOne(targetEntity: Folder::class, cascade: ['persist'], inversedBy: 'childrenFolders')]",
+                        "    #[Groups('basedoc.folder.get')]",
+                        "    protected ?FolderInterface $parentFolder;",
+                        "",
+                        "    public function __construct()",
+                        "    {",
+                        "        parent::__construct();",
+                        "        $this->childrenFolders = new ArrayCollection();",
+                        "        $this->documents = new ArrayCollection();",
+                        "    }",
+                        "",
+                        "    #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]",
+                        "    public function getCreatedAt(): ?\\DateTimeInterface",
+                        "    {",
+                        "        return $this->createdAt;",
+                        "    }",
+                        "",
+                        "    #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]",
+                        "    public function getUpdatedAt(): ?\\DateTimeInterface",
+                        "    {",
+                        "        return $this->updatedAt;",
+                        "    }",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "7414a92f76dc2287a97d0162e83f81fdfe3ad01a"
+        }
+    }
+}

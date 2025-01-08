@@ -5,6 +5,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | Package | Latest Recipe |
 | --- | --- |
 | [faros-ng/admin-bundle](https://packagist.org/packages/faros-ng/admin-bundle) | [3.5](faros-ng/admin-bundle/3.5) |
+| [faros-ng/basedoc-bundle](https://packagist.org/packages/faros-ng/basedoc-bundle) | [3.6](faros-ng/basedoc-bundle/3.6) |
 | [faros-ng/code-quality-pack](https://packagist.org/packages/faros-ng/code-quality-pack) | [2.3](faros-ng/code-quality-pack/2.3) |
 | [faros-ng/currency-bundle](https://packagist.org/packages/faros-ng/currency-bundle) | [3.0](faros-ng/currency-bundle/3.0) |
 | [faros-ng/deploy-pack](https://packagist.org/packages/faros-ng/deploy-pack) | [1.7](faros-ng/deploy-pack/1.7) |
