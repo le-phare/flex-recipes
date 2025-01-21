@@ -53,6 +53,10 @@ npm() {
     _docker_run_node npm "$@"
 }
 
+npx() {
+    _docker_run_node npx "$@"
+}
+
 php() {
     _docker_compose_run_php php "$@"
 }
@@ -65,4 +69,4 @@ yarn() {
     echo "Ce projet utilise npm."
 }
 
-echo composer npm php sf yarn
+echo composer npm npx php sf yarn
