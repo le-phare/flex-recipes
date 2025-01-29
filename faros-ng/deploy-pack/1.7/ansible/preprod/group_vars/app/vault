@@ -1,2 +1,3 @@
 vault_database_password: <remote_database_password>
 vault_lephare_packagist_com_token: <lephare_packagist_com_token>
+vault_anonymization_remote_database_password: <anonymization_remote_database_password>
