@@ -1,6 +1,6 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
+$finder = (new PhpCsFixer\Finder())
     ->in(__DIR__.'/src')
     ->in(__DIR__.'/migrations')
     ->in(__DIR__.'/tests')
@@ -26,5 +26,5 @@ return (new PhpCsFixer\Config())
         ]
     ])
     ->setFinder($finder)
-    ->setCacheFile('.php-cs-fixer.cache') // forward compatibility with 3.x line
+    ->setCacheFile('var/cache/.php-cs-fixer.cache')
 ;
