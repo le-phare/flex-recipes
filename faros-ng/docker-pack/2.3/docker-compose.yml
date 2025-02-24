@@ -1,6 +1,7 @@
 services:
     php:
         image: lephare/php:8.3
+        init: true
         volumes:
             - ./:/var/www/symfony
             - ${COMPOSER_HOME:-~/.composer}:/tmp/composer
