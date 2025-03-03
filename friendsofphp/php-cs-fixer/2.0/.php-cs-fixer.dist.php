@@ -20,9 +20,7 @@ return (new PhpCsFixer\Config())
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'new_line_for_chained_calls',
         ],
-        'phpdoc_separation' => [
-            'groups' => [['ORM\\*'], ['Assert\\*']],
-        ]
+        'phpdoc_separation' => true,
     ])
     ->setFinder($finder)
     ->setCacheFile('.php-cs-fixer.cache') // forward compatibility with 3.x line
