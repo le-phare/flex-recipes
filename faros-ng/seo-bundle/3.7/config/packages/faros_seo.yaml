@@ -1,0 +1,20 @@
+faros_seo:
+    redirection:
+        enable: true
+        exclude_patterns:
+            - ^/admin
+            - ^/api
+            - ^/assets
+            - ^/bundles
+            - ^/build
+            - ^/translations
+            - ^/js
+            - ^/image
+            - ^/media
+            - ^/_profiler
+    rewrite_redirect: false
+    redirection_class: App\Entity\Seo\Redirection
+    redirection_history_class: App\Entity\Seo\RedirectionHistory
+    redirection_history_save_path: '%kernel.project_dir%/var/history'
+    rule_class: App\Entity\Seo\Rule
+    rule_exception_class: App\Entity\Seo\RuleException
