@@ -1,0 +1,3 @@
+faros_comment:
+    comment_class: App\Entity\Comment\Comment
+    comment_closure_class: App\Entity\Comment\CommentClosure
