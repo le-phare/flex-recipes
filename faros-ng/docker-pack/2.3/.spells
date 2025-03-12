@@ -42,7 +42,7 @@ _docker_compose_run_php() {
 
 _docker_run_node() {
     touch "$HOME/.npmrc"
-    _docker_run -e "HOME=/home/node" -v "$PWD:/app" -v "$HOME/.npmrc:/home/node/.npmrc" -w /app node:20-slim "$@"
+    _docker_run -e "HOME=/home/node" -v "$PWD:/app" -v "$HOME/.npmrc:/home/node/.npmrc" -w /app node:22-slim "$@"
 }
 
 composer() {
