@@ -45,8 +45,8 @@ class Comment extends \Faros\Bundle\CommentBundle\Entity\Comment
     protected int $depth = 0;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    protected UserInterface $user;
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    protected ?UserInterface $user = null;
 
     public function __construct()
     {
