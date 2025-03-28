@@ -1,0 +1,5 @@
+# See https://dbtoolsbundle.readthedocs.io/en/stable/anonymization/core-anonymizers.html
+
+# faros_user:
+#     firstname: firstname
+#     lastname: lastname
