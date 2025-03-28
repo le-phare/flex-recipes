@@ -22,3 +22,4 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/user-bundle](https://packagist.org/packages/faros-ng/user-bundle) | [3.0](faros-ng/user-bundle/3.0) |
 | [faros-ng/user-feedback-bundle](https://packagist.org/packages/faros-ng/user-feedback-bundle) | [0.1](faros-ng/user-feedback-bundle/0.1) |
 | [friendsofphp/php-cs-fixer](https://packagist.org/packages/friendsofphp/php-cs-fixer) | [2.0](friendsofphp/php-cs-fixer/2.0) |
+| [makinacorpus/db-tools-bundle](https://packagist.org/packages/makinacorpus/db-tools-bundle) | [2.0](makinacorpus/db-tools-bundle/2.0) |

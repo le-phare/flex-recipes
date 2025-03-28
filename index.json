@@ -96,6 +96,9 @@
         ],
         "friendsofphp/php-cs-fixer": [
             "2.0"
+        ],
+        "makinacorpus/db-tools-bundle": [
+            "2.0"
         ]
     },
     "recipe-conflicts": [],
