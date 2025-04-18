@@ -11,7 +11,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/deploy-pack](https://packagist.org/packages/faros-ng/deploy-pack) | [1.7](faros-ng/deploy-pack/1.7) |
 | [faros-ng/docker-pack](https://packagist.org/packages/faros-ng/docker-pack) | [2.3](faros-ng/docker-pack/2.3) |
 | [faros-ng/event-log-bundle](https://packagist.org/packages/faros-ng/event-log-bundle) | [3.0](faros-ng/event-log-bundle/3.0) |
-| [faros-ng/export-bundle](https://packagist.org/packages/faros-ng/export-bundle) | [3.0](faros-ng/export-bundle/3.0) |
+| [faros-ng/export-bundle](https://packagist.org/packages/faros-ng/export-bundle) | [3.8](faros-ng/export-bundle/3.8) |
 | [faros-ng/glide-bundle](https://packagist.org/packages/faros-ng/glide-bundle) | [0.1](faros-ng/glide-bundle/0.1) |
 | [faros-ng/integration-bundle](https://packagist.org/packages/faros-ng/integration-bundle) | [0.1](faros-ng/integration-bundle/0.1) |
 | [faros-ng/order-bundle](https://packagist.org/packages/faros-ng/order-bundle) | [3.0](faros-ng/order-bundle/3.0) |

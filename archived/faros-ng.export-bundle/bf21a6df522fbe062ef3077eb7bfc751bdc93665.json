@@ -1,0 +1,104 @@
+{
+    "manifests": {
+        "faros-ng/export-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\ExportBundle\\FarosExportBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_export.yaml": {
+                    "contents": [
+                        "faros_export:",
+                        "    export_class: App\\Entity\\Export",
+                        "    export_tag_class: App\\Entity\\ExportTag",
+                        "    allowed_form_types:",
+                        "        text: Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+                        "        email: Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType",
+                        "        integer: Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+                        "        date: Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType",
+                        "        choice: Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Export.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Export\\Model\\Export as ExportModel;",
+                        "use Faros\\Bundle\\ExportBundle\\ORM\\ExportRepository;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ExportRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_export')]",
+                        "class Export extends ExportModel",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<int, Group>",
+                        "     */",
+                        "    #[ORM\\ManyToMany(targetEntity: Group::class)]",
+                        "    protected $groups;",
+                        "",
+                        "    #[ORM\\ManyToMany(targetEntity: ExportTag::class, cascade: ['persist'])]",
+                        "    protected $tags;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/ExportTag.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\ExportBundle\\ORM\\ExportTagRepository;",
+                        "use Faros\\Component\\Export\\Model\\ExportTag as ExportTagModel;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: ExportTagRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_export_tag')]",
+                        "class ExportTag extends ExportTagModel",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "bf21a6df522fbe062ef3077eb7bfc751bdc93665"
+        }
+    }
+}

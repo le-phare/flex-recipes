@@ -51,7 +51,8 @@
         "faros-ng/export-bundle": [
             "0.1",
             "1.20",
-            "3.0"
+            "3.0",
+            "3.8"
         ],
         "faros-ng/glide-bundle": [
             "0.1"
