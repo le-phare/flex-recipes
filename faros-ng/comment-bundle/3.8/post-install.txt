@@ -1,0 +1,3 @@
+* <fg=orange>Warning :</>
+  * <fg=white>CommentBundle required to enable gedmo tree extension <comment>(https://github.com/doctrine-extensions/DoctrineExtensions/blob/main/doc/tree.md)</>.</>
+  * <fg=white>ensure <comment>stof_doctrine_extensions.orm.default.tree</> config is set to true.</>
