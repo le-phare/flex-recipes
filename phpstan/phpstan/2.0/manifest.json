@@ -1,0 +1,9 @@
+{
+    "copy-from-recipe": {
+        "phpstan.dist.neon": "phpstan.dist.neon",
+        "tests/object-manager.php": "tests/object-manager.php"
+    },
+    "gitignore": [
+        "/phpstan.neon"
+    ]
+}
