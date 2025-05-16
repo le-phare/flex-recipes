@@ -1,0 +1,54 @@
+{
+    "manifests": {
+        "phpstan/phpstan": {
+            "manifest": {
+                "copy-from-recipe": {
+                    "phpstan.dist.neon": "phpstan.dist.neon",
+                    "tests/object-manager.php": "tests/object-manager.php"
+                },
+                "gitignore": [
+                    "/phpstan.neon"
+                ]
+            },
+            "files": {
+                "phpstan.dist.neon": {
+                    "contents": [
+                        "# Config Phpstan",
+                        "",
+                        "parameters:",
+                        "    level: 5",
+                        "    paths:",
+                        "        - src",
+                        "        - migrations",
+                        "",
+                        "    tmpDir: var/phpstan",
+                        "",
+                        "    doctrine:",
+                        "        objectManagerLoader: tests/object-manager.php",
+                        "",
+                        "    symfony:",
+                        "        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "tests/object-manager.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "use App\\Kernel;",
+                        "",
+                        "require __DIR__.'/../config/bootstrap.php';",
+                        "$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);",
+                        "$kernel->boot();",
+                        "",
+                        "return $kernel->getContainer()->get('doctrine')->getManager();",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "47f9c67a4cd3db69f29cdc4eb18f12da8258b9b5"
+        }
+    }
+}

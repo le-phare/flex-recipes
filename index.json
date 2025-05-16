@@ -1,5 +1,10 @@
 {
-    "aliases": [],
+    "aliases": {
+        "cs-fixer": "friendsofphp/php-cs-fixer",
+        "csfixer": "friendsofphp/php-cs-fixer",
+        "php-cs-fixer": "friendsofphp/php-cs-fixer",
+        "phpcsfixer": "friendsofphp/php-cs-fixer"
+    },
     "recipes": {
         "faros-ng/admin-bundle": [
             "0.1",
@@ -96,9 +101,13 @@
             "0.1"
         ],
         "friendsofphp/php-cs-fixer": [
-            "2.0"
+            "2.0",
+            "3.57"
         ],
         "makinacorpus/db-tools-bundle": [
+            "2.0"
+        ],
+        "phpstan/phpstan": [
             "2.0"
         ]
     },
