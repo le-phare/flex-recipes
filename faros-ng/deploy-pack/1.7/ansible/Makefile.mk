@@ -4,6 +4,9 @@
 ##
 ##              /!\  Ce Makefile a pour objectif d'être générique !
 ##
+##     Si vous souhaitez améliorer ou corriger ce Makefile, rendez-vous ici :
+##              https://github.com/le-phare/flex-recipes/issues
+##
 ## =============================================================================
 remote ?= preprod
 REMOTE ?= $(remote)
@@ -82,3 +85,6 @@ $(PLAYBOOKS):
 
 ssh:
 	ssh -t $(REMOTE_SSH) 'cd $(REMOTE_DIRECTORY); bash --login'
+
+sftp:
+	sftp -P $(REMOTE_SSH_PORT) $(REMOTE_SSH_USER)@$(REMOTE_SSH_HOST):$(REMOTE_DIRECTORY)
