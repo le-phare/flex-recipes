@@ -7,7 +7,7 @@ use Faros\Bundle\SeoBundle\Repository\RedirectionHistoryRepository;
 use Faros\Component\Seo\Model\RedirectionHistory as RedirectionHistoryModel;
 
 #[ORM\Entity(repositoryClass: RedirectionHistoryRepository::class)]
-#[ORM\Table(name: 'seo_redirection_history')]
+#[ORM\Table(name: 'faros_seo_redirection_history')]
 class RedirectionHistory extends RedirectionHistoryModel
 {
     /**

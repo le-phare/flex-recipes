@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Faros\Component\Seo\Model\RuleException as RuleExceptionModel;
 
 #[ORM\Entity]
-#[ORM\Table(name: 'seo_rule_exception')]
+#[ORM\Table(name: 'faros_seo_rule_exception')]
 class RuleException extends RuleExceptionModel
 {
     /**

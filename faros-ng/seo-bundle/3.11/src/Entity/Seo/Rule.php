@@ -8,7 +8,7 @@ use Faros\Bundle\SeoBundle\Repository\RuleRepository;
 use Faros\Component\Seo\Model\Rule as RuleModel;
 
 #[ORM\Entity(repositoryClass: RuleRepository::class)]
-#[ORM\Table(name: 'seo_rule')]
+#[ORM\Table(name: 'faros_seo_rule')]
 class Rule extends RuleModel
 {
     /**
