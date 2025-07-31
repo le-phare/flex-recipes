@@ -18,7 +18,7 @@ class Document extends \Faros\Bundle\BasedocBundle\Entity\Document
     use TimestampableEntity;
 
     /**
-     * @var Collection<Folder>
+     * @var Collection<int, Folder>
      */
     #[ORM\JoinTable(name: 'faros_basedoc_folder_document')]
     #[ORM\InverseJoinColumn(name: 'folder_id', referencedColumnName: 'id')]
