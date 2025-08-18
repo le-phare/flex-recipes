@@ -1,0 +1,2 @@
+faros_comment:
+    resource: "@FarosCommentBundle/config/routes.php"
