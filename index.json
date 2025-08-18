@@ -23,6 +23,9 @@
             "2.2",
             "2.3"
         ],
+        "faros-ng/comment-bundle": [
+            "3.12"
+        ],
         "faros-ng/currency-bundle": [
             "0.1",
             "1.20",

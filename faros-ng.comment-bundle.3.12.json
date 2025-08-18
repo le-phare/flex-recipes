@@ -1,0 +1,143 @@
+{
+    "manifests": {
+        "faros-ng/comment-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\CommentBundle\\FarosCommentBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                },
+                "post-install-output": [
+                    "* <fg=orange>Warning :</>",
+                    "  * <fg=white>CommentBundle required to enable gedmo tree extension <comment>(https://github.com/doctrine-extensions/DoctrineExtensions/blob/main/doc/tree.md)</>.</>",
+                    "  * <fg=white>ensure <comment>stof_doctrine_extensions.orm.default.tree</> config is set to true.</>"
+                ]
+            },
+            "files": {
+                "config/packages/faros_comment.yaml": {
+                    "contents": [
+                        "faros_comment:",
+                        "    comment_class: App\\Entity\\Comment\\Comment",
+                        "    comment_closure_class: App\\Entity\\Comment\\CommentClosure",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/faros_comment.yaml": {
+                    "contents": [
+                        "faros_comment:",
+                        "    resource: \"@FarosCommentBundle/config/routes.php\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Comment/Comment.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Comment;",
+                        "",
+                        "use App\\Entity\\User;",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\CommentBundle\\Repository\\CommentRepository;",
+                        "use Faros\\Component\\Comment\\Model\\Comment as CommentModel;",
+                        "use Faros\\Component\\Comment\\Model\\CommentInterface;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Mapping\\Annotation as Gedmo;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "use Symfony\\Component\\Security\\Core\\User\\UserInterface;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: CommentRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_comment_comment')]",
+                        "#[ORM\\Index(columns: ['object_class'])]",
+                        "#[ORM\\Index(columns: ['object_id'])]",
+                        "#[ORM\\Index(columns: ['created_at'])]",
+                        "#[Gedmo\\Tree(type: 'closure')]",
+                        "#[Gedmo\\TreeClosure(class: CommentClosure::class)]",
+                        "class Comment extends CommentModel",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Comment|null",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: self::class)]",
+                        "    #[ORM\\JoinColumn(nullable: true, onDelete: 'CASCADE')]",
+                        "    #[Gedmo\\TreeParent]",
+                        "    protected ?CommentInterface $parent;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<array-key, CommentClosure>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: CommentClosure::class, mappedBy: 'descendant')]",
+                        "    protected Collection $ancestors;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<array-key, CommentClosure>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: CommentClosure::class, mappedBy: 'ancestor')]",
+                        "    protected Collection $descendants;",
+                        "",
+                        "    #[Gedmo\\TreeLevel]",
+                        "    protected int $depth = 0;",
+                        "",
+                        "    /**",
+                        "     * @var User|null",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: User::class)]",
+                        "    #[ORM\\JoinColumn(nullable: true, onDelete: 'SET NULL')]",
+                        "    protected ?UserInterface $user;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Comment/CommentClosure.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Comment;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Component\\Comment\\Model\\CommentClosure as CommentClosureModel;",
+                        "",
+                        "#[ORM\\Entity]",
+                        "#[ORM\\Table(name: 'faros_comment_comment_closure')]",
+                        "#[ORM\\UniqueConstraint(name: 'closure_unique_idx', columns: ['ancestor', 'descendant'])]",
+                        "#[ORM\\Index(name: 'closure_depth_idx', columns: ['depth'])]",
+                        "class CommentClosure extends CommentClosureModel",
+                        "{",
+                        "    /**",
+                        "     * @var Comment",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: Comment::class, inversedBy: 'descendants', fetch: 'LAZY')]",
+                        "    #[ORM\\JoinColumn(name: 'ancestor', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]",
+                        "    protected $ancestor;",
+                        "",
+                        "    /**",
+                        "     * @var Comment",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: Comment::class, inversedBy: 'ancestors', fetch: 'LAZY')]",
+                        "    #[ORM\\JoinColumn(name: 'descendant', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]",
+                        "    protected $descendant;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "6b67e210bd161dea5af9a609c35fd27f0059db9a"
+        }
+    }
+}
