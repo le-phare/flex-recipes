@@ -1,0 +1,6 @@
+faros_notification:
+    notification_class: App\Entity\Notification
+    notification_repository: Faros\Bundle\NotificationBundle\Repository\NotificationRepository
+    max_items: 10
+    enable_archive: true
+    template: 'nested'
