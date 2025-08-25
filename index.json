@@ -69,6 +69,9 @@
         "faros-ng/integration-bundle": [
             "0.1"
         ],
+        "faros-ng/notification-bundle": [
+            "3.12"
+        ],
         "faros-ng/order-bundle": [
             "1.5",
             "1.20",

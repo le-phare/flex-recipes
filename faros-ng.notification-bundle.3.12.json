@@ -1,0 +1,71 @@
+{
+    "manifests": {
+        "faros-ng/notification-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\NotificationBundle\\FarosNotificationBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_notification.yaml": {
+                    "contents": [
+                        "faros_notification:",
+                        "    notification_class: App\\Entity\\Notification",
+                        "    notification_repository: Faros\\Bundle\\NotificationBundle\\Repository\\NotificationRepository",
+                        "    max_items: 10",
+                        "    enable_archive: true",
+                        "    template: 'nested'",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/faros_notification.yaml": {
+                    "contents": [
+                        "faros_notification:",
+                        "    resource: \"@FarosNotificationBundle/config/routes.php\"",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Notification.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\NotificationBundle\\Repository\\NotificationRepository;",
+                        "use Faros\\Component\\Notification\\Model\\Notification as NotificationModel;",
+                        "use Faros\\Component\\User\\Model\\UserInterface;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: NotificationRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_notification')]",
+                        "class Notification extends NotificationModel",
+                        "{",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected ?int $id = null;",
+                        "",
+                        "    /**",
+                        "     * @var User",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: User::class)]",
+                        "    #[ORM\\JoinColumn(nullable: false)]",
+                        "    protected UserInterface $user;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "36befd14b01aefaa508fec29bbfcb7aeb8e816f7"
+        }
+    }
+}
