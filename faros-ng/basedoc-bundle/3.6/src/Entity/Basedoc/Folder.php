@@ -26,7 +26,7 @@ class Folder extends \Faros\Bundle\BasedocBundle\Entity\Folder
     protected Collection $documents;
 
     /**
-     * @var Collection<int, Folder>
+     * @var Collection<array-key, Folder>
      */
     #[ORM\OneToMany(targetEntity: Folder::class, mappedBy: 'parentFolder', cascade: ['remove'])]
     #[Groups('basedoc.folder.get')]
