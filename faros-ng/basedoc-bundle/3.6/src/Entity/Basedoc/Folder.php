@@ -19,7 +19,7 @@ class Folder extends \Faros\Bundle\BasedocBundle\Entity\Folder
     use TimestampableEntity;
 
     /**
-     * @var Collection<int, Document>
+     * @var Collection<array-key, Document>
      */
     #[ORM\ManyToMany(targetEntity: Document::class, mappedBy: 'folders')]
     #[Groups('basedoc.folder.get')]
