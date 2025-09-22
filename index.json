@@ -15,7 +15,8 @@
             "3.5"
         ],
         "faros-ng/basedoc-bundle": [
-            "3.6"
+            "3.6",
+            "3.12"
         ],
         "faros-ng/code-quality-pack": [
             "0.1",
