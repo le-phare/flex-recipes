@@ -1,0 +1,106 @@
+{
+    "manifests": {
+        "faros-ng/terms-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\TermsBundle\\FarosTermsBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_terms.yaml": {
+                    "contents": [
+                        "faros_terms:",
+                        "    terms_class: App\\Entity\\Terms\\Terms",
+                        "    terms_acceptation_class: App\\Entity\\Terms\\TermsAcceptation",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Terms/Terms.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Terms;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\DBAL\\Types\\Types;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\TermsBundle\\Repository\\TermsRepository;",
+                        "use Faros\\Component\\Terms\\Model\\Terms as TermsModel;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: TermsRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_terms')]",
+                        "class Terms extends TermsModel",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: Types::INTEGER)]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<array-key, TermsAcceptation>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: TermsAcceptation::class, mappedBy: 'terms', orphanRemoval: true)]",
+                        "    protected Collection $termsAcceptations;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Terms/TermsAcceptation.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Terms;",
+                        "",
+                        "use App\\Entity\\User;",
+                        "use Doctrine\\DBAL\\Types\\Types;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\TermsBundle\\Repository\\TermsAcceptationRepository;",
+                        "use Faros\\Component\\Terms\\Model\\TermsAcceptation as TermsAcceptationModel;",
+                        "use Faros\\Component\\Terms\\Model\\TermsInterface;",
+                        "use Symfony\\Component\\Security\\Core\\User\\UserInterface;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: TermsAcceptationRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_terms_acceptation')]",
+                        "class TermsAcceptation extends TermsAcceptationModel",
+                        "{",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: Types::INTEGER)]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var User",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: User::class)]",
+                        "    #[ORM\\JoinColumn(nullable: false)]",
+                        "    protected UserInterface $user;",
+                        "",
+                        "    /**",
+                        "     * @var Terms",
+                        "     */",
+                        "    #[ORM\\ManyToOne(targetEntity: Terms::class)]",
+                        "    #[ORM\\JoinColumn(nullable: false)]",
+                        "    protected TermsInterface $terms;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "30a7855d6c2e5ad01530c592965366fde86e6e69"
+        }
+    }
+}

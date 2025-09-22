@@ -97,6 +97,9 @@
             "3.2",
             "3.11"
         ],
+        "faros-ng/terms-bundle": [
+            "3.14"
+        ],
         "faros-ng/theme-bundle": [
             "3.0"
         ],
