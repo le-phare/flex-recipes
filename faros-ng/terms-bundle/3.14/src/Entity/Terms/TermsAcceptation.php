@@ -29,7 +29,7 @@ class TermsAcceptation extends TermsAcceptationModel
     /**
      * @var Terms
      */
-    #[ORM\ManyToOne(targetEntity: Terms::class)]
+    #[ORM\ManyToOne(targetEntity: Terms::class, inversedBy: 'termsAcceptations')]
     #[ORM\JoinColumn(nullable: false)]
     protected TermsInterface $terms;
 }
