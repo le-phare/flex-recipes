@@ -1,0 +1,3 @@
+faros_terms:
+    terms_class: App\Entity\Terms\Terms
+    terms_acceptation_class: App\Entity\Terms\TermsAcceptation
