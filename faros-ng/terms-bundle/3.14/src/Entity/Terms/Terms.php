@@ -7,12 +7,14 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\TermsBundle\Repository\TermsRepository;
 use Faros\Component\Terms\Model\Terms as TermsModel;
+use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: TermsRepository::class)]
 #[ORM\Table(name: 'faros_terms')]
 class Terms extends TermsModel
 {
+    use BlameableEntity;
     use TimestampableEntity;
 
     #[ORM\Id]
