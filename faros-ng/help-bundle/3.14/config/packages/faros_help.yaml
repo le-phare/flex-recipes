@@ -1,0 +1,2 @@
+faros_help:
+    help_page_class: App\Entity\Help\HelpPage
