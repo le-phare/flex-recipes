@@ -6,6 +6,7 @@ services:
             - ./:/var/www/symfony
             - ${COMPOSER_HOME:-~/.composer}:/tmp/composer
         environment:
+            COMPOSER_AUTH: ${COMPOSER_AUTH:-{}}
             COMPOSER_HOME: /tmp/composer
             DOCKER_HOST_SUFFIX: ${DOCKER_HOST_SUFFIX:-local}
             SYMFONY_DEPRECATIONS_HELPER: "max[direct]=0&verbose=1"
