@@ -1,0 +1,92 @@
+{
+    "manifests": {
+        "faros-ng/task-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\UserBundle\\FarosTaskBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_task.yaml": {
+                    "contents": [
+                        "faros_task:",
+                        "    show_loader: true",
+                        "    task_class: App\\Entity\\Task\\Task",
+                        "    task_history_class: App\\Entity\\Task\\TaskHistory",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Task/Task.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Task;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\TaskBundle\\Repository\\TaskRepository;",
+                        "use Faros\\Component\\Task\\Model\\Task as TaskModel;",
+                        "use Faros\\Component\\Task\\Model\\TaskInterface;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: TaskRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_task_task')]",
+                        "class Task extends TaskModel implements TaskInterface",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Task/TaskHistory.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Task;",
+                        "",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\TaskBundle\\Repository\\TaskHistoryRepository;",
+                        "use Faros\\Component\\Task\\Model\\TaskHistory as TaskHistoryModel;",
+                        "use Faros\\Component\\Task\\Model\\TaskHistoryInterface;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: TaskHistoryRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_task_task_history')]",
+                        "class TaskHistory extends TaskHistoryModel implements TaskHistoryInterface",
+                        "{",
+                        "    use BlameableEntity;",
+                        "",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b1119fbef463e9840d7837f67bc1cb2ac027f837"
+        }
+    }
+}
