@@ -1,8 +1,0 @@
-faros_task:
-    task_class: App\Entity\Task\Task
-    task_history_class: App\Entity\Task\TaskHistory
-
-doctrine:
-    dbal:
-        types:
-            task_history_status: Faros\Component\Task\Types\TaskHistoryStatusType
