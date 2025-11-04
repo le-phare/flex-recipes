@@ -67,6 +67,9 @@
         "faros-ng/glide-bundle": [
             "0.1"
         ],
+        "faros-ng/help-bundle": [
+            "3.14"
+        ],
         "faros-ng/integration-bundle": [
             "0.1"
         ],

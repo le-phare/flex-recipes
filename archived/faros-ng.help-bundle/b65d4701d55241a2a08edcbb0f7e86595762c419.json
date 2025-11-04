@@ -1,0 +1,57 @@
+{
+    "manifests": {
+        "faros-ng/help-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\HelpBundle\\FarosHelpBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/",
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_help.yaml": {
+                    "contents": [
+                        "faros_help:",
+                        "    help_page_class: App\\Entity\\Help\\HelpPage",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "src/Entity/Help/HelpPage.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Terms;",
+                        "",
+                        "use Doctrine\\DBAL\\Types\\Types;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\HelpBundle\\Repository\\HelpPageRepository;",
+                        "use Faros\\Component\\Help\\Model\\HelpPage as BaseHelpPage;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "",
+                        "#[ORM\\Entity(repositoryClass: HelpPageRepository::class)]",
+                        "#[ORM\\Table(name: 'faros_help_page')]",
+                        "class HelpPage extends BaseHelpPage",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: Types::INTEGER)]",
+                        "    protected $id;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "b65d4701d55241a2a08edcbb0f7e86595762c419"
+        }
+    }
+}
