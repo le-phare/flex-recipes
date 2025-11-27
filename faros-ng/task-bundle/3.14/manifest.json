@@ -1,6 +1,6 @@
 {
     "bundles": {
-        "Faros\\Bundle\\UserBundle\\FarosTaskBundle": ["all"]
+        "Faros\\Bundle\\TaskBundle\\FarosTaskBundle": ["all"]
     },
     "copy-from-recipe": {
         "config/": "%CONFIG_DIR%/",
