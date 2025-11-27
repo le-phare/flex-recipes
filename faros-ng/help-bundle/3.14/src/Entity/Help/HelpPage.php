@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Terms;
+namespace App\Entity\Help;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
