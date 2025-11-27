@@ -1,4 +1,0 @@
-faros_task:
-    show_loader: true
-    task_class: App\Entity\Task\Task
-    task_history_class: App\Entity\Task\TaskHistory
