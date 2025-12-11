@@ -25,7 +25,7 @@ class Document extends FarosDocument
     protected ?int $id = null;
 
     /**
-     * @var Collection<array-key, Folder>
+     * @var Collection<int, Folder>
      */
     #[ORM\JoinTable(name: 'faros_basedoc_folder_document')]
     #[ORM\InverseJoinColumn(name: 'folder_id', referencedColumnName: 'id')]
@@ -35,7 +35,7 @@ class Document extends FarosDocument
     protected Collection $folders;
 
     /**
-     * @var Collection<array-key, DocumentAccessRight>
+     * @var Collection<int, DocumentAccessRight>
      */
     #[ORM\OneToMany(targetEntity: DocumentAccessRight::class, mappedBy: 'document', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]

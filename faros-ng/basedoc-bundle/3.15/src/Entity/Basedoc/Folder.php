@@ -26,7 +26,7 @@ class Folder extends FarosFolder
     protected ?int $id = null;
 
     /**
-     * @var Collection<array-key, Document>
+     * @var Collection<int, Document>
      */
     #[ORM\ManyToMany(targetEntity: Document::class, mappedBy: 'folders')]
     #[Groups('basedoc.folder.get')]
@@ -34,7 +34,7 @@ class Folder extends FarosFolder
     protected Collection $documents;
 
     /**
-     * @var Collection<array-key, Folder>
+     * @var Collection<int, Folder>
      */
     #[ORM\OneToMany(targetEntity: Folder::class, mappedBy: 'parentFolder', cascade: ['remove'])]
     #[Groups('basedoc.folder.get')]
@@ -47,7 +47,7 @@ class Folder extends FarosFolder
     protected ?FolderInterface $parentFolder;
 
     /**
-     * @var Collection<array-key, FolderAccessRight>
+     * @var Collection<int, FolderAccessRight>
      */
     #[ORM\OneToMany(targetEntity: FolderAccessRight::class, mappedBy: 'folder', cascade: ['persist', 'remove'], orphanRemoval: true)]
     #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]
