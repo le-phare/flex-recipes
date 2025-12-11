@@ -1,0 +1,10 @@
+faros_basedoc:
+    folder_class: App\Entity\Basedoc\Folder
+    document_class: App\Entity\Basedoc\Document
+
+flysystem:
+    storages:
+        basedoc:
+            adapter: 'local'
+            options:
+                directory: '%kernel.project_dir%/var/basedoc'
