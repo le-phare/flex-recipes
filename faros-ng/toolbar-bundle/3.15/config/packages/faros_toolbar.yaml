@@ -1,6 +1,2 @@
 faros_toolbar:
     enabled: true
-
-when@dev:
-    faros_toolbar:
-        enabled: false
