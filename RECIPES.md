@@ -24,6 +24,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/task-bundle](https://packagist.org/packages/faros-ng/task-bundle) | [3.14](faros-ng/task-bundle/3.14) |  |
 | [faros-ng/terms-bundle](https://packagist.org/packages/faros-ng/terms-bundle) | [3.14](faros-ng/terms-bundle/3.14) |  |
 | [faros-ng/theme-bundle](https://packagist.org/packages/faros-ng/theme-bundle) | [3.0](faros-ng/theme-bundle/3.0) |  |
+| [faros-ng/toolbar-bundle](https://packagist.org/packages/faros-ng/toolbar-bundle) | [3.15](faros-ng/toolbar-bundle/3.15) |  |
 | [faros-ng/user-bundle](https://packagist.org/packages/faros-ng/user-bundle) | [3.0](faros-ng/user-bundle/3.0) |  |
 | [faros-ng/user-feedback-bundle](https://packagist.org/packages/faros-ng/user-feedback-bundle) | [0.1](faros-ng/user-feedback-bundle/0.1) |  |
 | [friendsofphp/php-cs-fixer](https://packagist.org/packages/friendsofphp/php-cs-fixer) | [3.57](friendsofphp/php-cs-fixer/3.57) | `cs-fixer`, `csfixer`, `php-cs-fixer`, `phpcsfixer` |

@@ -110,6 +110,9 @@
         "faros-ng/theme-bundle": [
             "3.0"
         ],
+        "faros-ng/toolbar-bundle": [
+            "3.15"
+        ],
         "faros-ng/user-bundle": [
             "0.1",
             "1.18",

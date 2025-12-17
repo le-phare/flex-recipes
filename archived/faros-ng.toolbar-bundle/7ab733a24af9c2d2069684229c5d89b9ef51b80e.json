@@ -1,0 +1,27 @@
+{
+    "manifests": {
+        "faros-ng/toolbar-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\ToolbarBundle\\FarosToolbarBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_toolbar.yaml": {
+                    "contents": [
+                        "faros_toolbar:",
+                        "    enabled: true",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "7ab733a24af9c2d2069684229c5d89b9ef51b80e"
+        }
+    }
+}
