@@ -61,7 +61,7 @@ PLAYBOOK= $(ANSIBLE_ENV) ansible-playbook $(ANSIBLE_OPTION)
 PLAYBOOKS = $(basename $(patsubst %/,%,$(sort $(notdir $(wildcard $(current_dir)/*.yml)))))
 
 facts:
-	$(ANSIBLE) all --inventory-file=$(current_dir)/$(REMOTE)/hosts --module-name=setup
+	$(ANSIBLE) all -i $(current_dir)/$(REMOTE)/hosts --module-name=setup
 
 vault-encrypt:
 	$(VAULT) encrypt $(current_dir)/$(REMOTE)/group_vars/$(APPLICATION)/vault
@@ -70,7 +70,7 @@ vault-decrypt:
 	$(VAULT) decrypt $(current_dir)/$(REMOTE)/group_vars/$(APPLICATION)/vault
 
 $(PLAYBOOKS):
-	$(PLAYBOOK) --inventory-file=$(current_dir)/$(REMOTE)/hosts $(current_dir)/$@.yml
+	$(PLAYBOOK) -i $(current_dir)/$(REMOTE)/hosts $(current_dir)/$@.yml
 
 ssh:
 	ssh -t $(REMOTE_SSH) 'cd $(REMOTE_DIRECTORY); bash --login'
