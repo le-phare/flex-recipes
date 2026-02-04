@@ -1,7 +1,6 @@
 #!/bin/sh
 
-_docker_exec()
-{
+_docker_exec() {
     if [ "$(uname -s)" != "Darwin" ]; then
         docker exec -it -u "$(id -u):$(id -g)" "$@"
     else
@@ -9,8 +8,7 @@ _docker_exec()
     fi
 }
 
-_docker_run()
-{
+_docker_run() {
     if [ "$(uname -s)" != "Darwin" ]; then
         docker run --init --rm -it -u "$(id -u):$(id -g)" "$@"
     else
@@ -18,8 +16,7 @@ _docker_run()
     fi
 }
 
-_docker_compose_exec()
-{
+_docker_compose_exec() {
     if [ "$(uname -s)" != "Darwin" ]; then
         docker compose exec -it -u "$(id -u):$(id -g)" "$@"
     else
@@ -27,8 +24,7 @@ _docker_compose_exec()
     fi
 }
 
-_docker_compose_run()
-{
+_docker_compose_run() {
     if [ "$(uname -s)" != "Darwin" ]; then
         docker compose run --rm -it -u "$(id -u):$(id -g)" "$@"
     else
@@ -42,7 +38,7 @@ _docker_compose_run_php() {
 
 _docker_run_node() {
     touch "$HOME/.npmrc"
-    _docker_run -e "HOME=/home/node" -v "$PWD:/app" -v "$HOME/.npmrc:/home/node/.npmrc" -w /app node:22-slim "$@"
+    _docker_run -e "HOME=/home/node" -v "$PWD:/app" -v "${npm_config_cache:-$HOME/.npm}:/home/node/.npm" -v "${npm_config_userconfig:-$HOME/.npmrc}:/home/node/.npmrc" -w /app node:24-slim "$@"
 }
 
 composer() {
