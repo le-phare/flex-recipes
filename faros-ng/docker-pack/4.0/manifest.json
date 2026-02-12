@@ -1,0 +1,21 @@
+{
+    "copy-from-recipe": {
+        ".spells": ".spells",
+        "compose.yaml": "compose.yaml",
+        "public/": "%PUBLIC_DIR%/"
+    },
+    "dotenv": {
+        "dev": {
+            "DATABASE_URL": "postgres://postgres:root@pgsql_17:5432/project?serverVersion=17&charset=utf8",
+            "MAILER_DSN": "smtp://maildev:25",
+            "SENTRY_DSN": "",
+            "SYMFONY_TRUSTED_PROXIES": "127.0.0.1,172.0.0.0/8"
+        }
+    },
+    "env": {
+        "SYMFONY_TRUSTED_PROXIES": "127.0.0.1"
+    },
+    "gitignore": [
+        "compose.override.yaml"
+    ]
+}
