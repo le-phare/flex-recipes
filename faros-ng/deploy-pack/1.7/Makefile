@@ -1,6 +1,6 @@
 SF = docker compose run --rm php bin/console
 COMPOSER = docker compose run --rm php composer
-NPM = $(DOCKER) node:lts npm
+NPM = $(DOCKER) node:24-slim npm
 
 start: install
 	docker compose up -d
