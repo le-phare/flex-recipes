@@ -16,6 +16,7 @@ class Redirection extends RedirectionModel
 {
     /**
      * @var int|null
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")

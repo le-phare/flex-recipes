@@ -23,6 +23,7 @@ class Currency extends FarosCurrency
     /**
      * @ORM\Id
      * @ORM\Column(type="string")
+     *
      * @Serializer\Groups({"cart_api"})
      *
      * @var string

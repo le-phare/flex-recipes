@@ -24,6 +24,7 @@ class OrderItem extends FarosOrderItem
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
+     *
      * @Serializer\Groups({"cart_api"})
      */
     #[ORM\Id]
