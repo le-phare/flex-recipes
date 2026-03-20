@@ -10,6 +10,9 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
+/**
+ * @extends FarosOrder<Adjustment, OrderItem>
+ */
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: 'commerce_order')]
 class Order extends FarosOrder

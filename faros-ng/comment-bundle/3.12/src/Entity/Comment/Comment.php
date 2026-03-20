@@ -7,12 +7,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\CommentBundle\Repository\CommentRepository;
 use Faros\Component\Comment\Model\Comment as CommentModel;
+use Faros\Component\Comment\Model\CommentClosure;
 use Faros\Component\Comment\Model\CommentInterface;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @extends CommentModel<CommentClosure>
+ */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\Table(name: 'faros_comment_comment')]
 #[ORM\Index(columns: ['object_class'])]

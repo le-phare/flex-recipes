@@ -8,6 +8,9 @@ use Faros\Component\Order\Model\OrderItemUnit as FarosOrderItemUnit;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
+/**
+ * @extends FarosOrderItemUnit<Adjustment>
+ */
 #[ORM\Entity]
 #[ORM\Table(name: 'commerce_order_item_unit')]
 class OrderItemUnit extends FarosOrderItemUnit

@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\SeoBundle\Repository\RuleRepository;
 use Faros\Component\Seo\Model\Rule as RuleModel;
 
+/**
+ * @extends RuleModel<RuleException>
+ */
 #[ORM\Entity(repositoryClass: RuleRepository::class)]
 #[ORM\Table(name: 'faros_seo_rule')]
 class Rule extends RuleModel

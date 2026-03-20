@@ -10,6 +10,9 @@ use Faros\Component\Terms\Model\Terms as TermsModel;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
+/**
+ * @extends TermsModel<TermsAcceptation>
+ */
 #[ORM\Entity(repositoryClass: TermsRepository::class)]
 #[ORM\Table(name: 'faros_terms')]
 class Terms extends TermsModel

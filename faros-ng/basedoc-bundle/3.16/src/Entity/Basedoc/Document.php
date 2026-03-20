@@ -12,6 +12,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\MaxDepth;
 
+/**
+ * @extends FarosDocument<DocumentAccessRight, Folder>
+ */
 #[ORM\Entity(repositoryClass: DocumentRepository::class)]
 #[ORM\Table(name: 'faros_basedoc_document')]
 class Document extends FarosDocument
