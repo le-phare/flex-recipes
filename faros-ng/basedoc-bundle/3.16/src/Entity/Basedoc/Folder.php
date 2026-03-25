@@ -13,6 +13,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\MaxDepth;
 
+/**
+ * @extends FarosFolder<FolderAccessRight>
+ */
 #[ORM\Entity(repositoryClass: FolderRepository::class)]
 #[ORM\Table(name: 'faros_basedoc_folder')]
 class Folder extends FarosFolder
@@ -31,19 +34,21 @@ class Folder extends FarosFolder
     #[ORM\ManyToMany(targetEntity: Document::class, mappedBy: 'folders')]
     #[Groups('basedoc.folder.get')]
     #[MaxDepth(1)]
-    protected Collection $documents;
+    protected Collection $documents; // @phpstan-ignore property.phpDocType (Fix upstream in Faros by using a generic type)
 
     /**
-     * @var Collection<int, Folder>
+     * @var Collection<int, self>
      */
     #[ORM\OneToMany(targetEntity: Folder::class, mappedBy: 'parentFolder', cascade: ['remove'])]
     #[Groups('basedoc.folder.get')]
     #[MaxDepth(1)]
-    protected Collection $childrenFolders;
+    protected Collection $childrenFolders; // @phpstan-ignore property.phpDocType (Fix upstream in Faros by using a generic type or `covariant FolderInterface`)
 
-    /** @var Folder|null */
+    /**
+     * @var self|null
+     */
     #[ORM\ManyToOne(targetEntity: Folder::class, cascade: ['persist'], inversedBy: 'childrenFolders')]
-    protected ?FolderInterface $parentFolder;
+    protected ?FolderInterface $parentFolder; // @phpstan-ignore property.phpDocType (Fix upstream in Faros by using a generic type or by removing `@var`)
 
     /**
      * @var Collection<int, FolderAccessRight>

@@ -9,6 +9,9 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Annotation as Serializer;
 
+/**
+ * @extends FarosOrderItem<Order, OrderItemUnit, Adjustment>
+ */
 #[ORM\Entity]
 #[ORM\Table(name: 'commerce_order_item')]
 class OrderItem extends FarosOrderItem
