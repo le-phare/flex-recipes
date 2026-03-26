@@ -33,6 +33,7 @@ class Document extends FarosDocument
     #[ORM\JoinTable(name: 'faros_basedoc_folder_document')]
     #[ORM\InverseJoinColumn(name: 'folder_id', referencedColumnName: 'id')]
     #[ORM\ManyToMany(targetEntity: Folder::class, inversedBy: 'documents')]
+    #[MaxDepth(1)]
     protected Collection $folders;
 
     /**
