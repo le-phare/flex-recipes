@@ -163,7 +163,7 @@
                         "use Symfony\\Component\\Serializer\\Attribute\\MaxDepth;",
                         "",
                         "/**",
-                        " * @extends FarosFolder<FolderAccessRight>",
+                        " * @extends FarosFolder<FolderAccessRight, Document, self, self>",
                         " */",
                         "#[ORM\\Entity(repositoryClass: FolderRepository::class)]",
                         "#[ORM\\Table(name: 'faros_basedoc_folder')]",
@@ -183,7 +183,7 @@
                         "    #[ORM\\ManyToMany(targetEntity: Document::class, mappedBy: 'folders')]",
                         "    #[Groups('basedoc.folder.get')]",
                         "    #[MaxDepth(1)]",
-                        "    protected Collection $documents; // @phpstan-ignore property.phpDocType (Fix upstream in Faros by using a generic type)",
+                        "    protected Collection $documents;",
                         "",
                         "    /**",
                         "     * @var Collection<int, self>",
@@ -191,13 +191,13 @@
                         "    #[ORM\\OneToMany(targetEntity: Folder::class, mappedBy: 'parentFolder', cascade: ['remove'])]",
                         "    #[Groups('basedoc.folder.get')]",
                         "    #[MaxDepth(1)]",
-                        "    protected Collection $childrenFolders; // @phpstan-ignore property.phpDocType (Fix upstream in Faros by using a generic type or `covariant FolderInterface`)",
+                        "    protected Collection $childrenFolders;",
                         "",
                         "    /**",
                         "     * @var self|null",
                         "     */",
                         "    #[ORM\\ManyToOne(targetEntity: Folder::class, cascade: ['persist'], inversedBy: 'childrenFolders')]",
-                        "    protected ?FolderInterface $parentFolder; // @phpstan-ignore property.phpDocType (Fix upstream in Faros by using a generic type or by removing `@var`)",
+                        "    protected ?FolderInterface $parentFolder;",
                         "",
                         "    /**",
                         "     * @var Collection<int, FolderAccessRight>",
@@ -277,7 +277,7 @@
                     "executable": false
                 }
             },
-            "ref": "bbd75584bc739fcc209ef4686739703c66053a21"
+            "ref": "7c6eb2060abfa6ee0b8368258b351b6e31a204d2"
         }
     }
 }
