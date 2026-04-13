@@ -4,7 +4,7 @@ faros_basedoc:
 
 flysystem:
     storages:
-        basedoc:
+        basedoc.storage:
             adapter: 'local'
             options:
                 directory: '%kernel.project_dir%/var/basedoc'
