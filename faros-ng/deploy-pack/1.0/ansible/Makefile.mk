@@ -32,7 +32,7 @@ database_network := $(shell docker inspect $(database_container) -f {{.HostConfi
 
 DOCKER_NETWORKS = $(addprefix --network ,$(database_network))
 
-ANSIBLE_IMAGE ?= lephare/ansible:latest
+ANSIBLE_IMAGE ?= lephare/ansible:2
 ANSIBLE_VAULT_FILE = ~/.ansible/password/$(notdir $(abspath .)).txt
 ANSIBLE_STDOUT_CALLBACK ?= default
 ANSIBLE_PIPELINING ?= 0
