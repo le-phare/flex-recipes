@@ -1,0 +1,14 @@
+faros_glide:
+#    presets:
+#        example:
+#            w: 360
+#            h: 240
+#            fit: crop
+    servers:
+        image:
+            source: 'default.storage'
+            cache: 'default.storage'
+            max_image_size: 4000000
+            defaults:
+                fm: pjpg
+                q: 80

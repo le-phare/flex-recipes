@@ -1,0 +1,23 @@
+name: Lint
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+jobs:
+    lint:
+        uses: le-phare/github-actions-workflows/.github/workflows/lint.yml@v1
+        with:
+            enable-eslint: false
+            enable-phpstan: false
+            node-needs-composer-install: false # Set to `true` if you're using Symfony UX
+            # node-registry-url: "https://npm.pkg.github.com" # Uncomment if you're using the faros-ng-metronic npm package
+            # node-version: "24"
+            php-version: "8.5"
+            phpstan-symfony-warmup: false
+            # phpstan-symfony-warmup-needs-database: true # Uncomment if you're using Faros NG SEO bundle
+            # postgresql-version: "17" # Uncomment and configure if you're using Faros NG SEO bundle
+        # secrets:
+            # COMPOSER_AUTH: '{"http-basic": {"repo.packagist.com": {"username": "token", "password": "${{ secrets.PACKAGIST_COM_TOKEN }}"}}}'
+            # NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Uncomment if you're using the faros-ng-metronic npm package

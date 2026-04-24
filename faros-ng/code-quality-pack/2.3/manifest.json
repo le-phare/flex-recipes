@@ -1,4 +1,13 @@
 {
+  "composer-commands": {
+    "lint": [
+      "@lint:php"
+    ],
+    "lint:fix": [
+      "@lint:php:fix"
+    ],
+    "test": "phpunit"
+  },
   "copy-from-recipe": {
     ".editorconfig": ".editorconfig"
   }

@@ -5,10 +5,10 @@ namespace App\Entity\EventLog;
 use App\Entity\User;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Faros\Bundle\EventLogBundle\Repository\TransactionRepository;
 use Faros\Component\EventLog\Model\Transaction as TransactionModel;
 use Faros\Component\EventLog\Model\TransactionInterface;
 use Faros\Component\EventLog\Traits\TimestampableImmutableEntity;
-use Faros\Bundle\EventLogBundle\Repository\TransactionRepository;
 use Gedmo\Blameable\Traits\BlameableEntity;
 
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]

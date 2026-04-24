@@ -2,12 +2,12 @@
 
 namespace App\Entity\Basedoc;
 
-use App\Repository\Basedoc\FolderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\BasedocBundle\Entity\Folder as FarosFolder;
 use Faros\Bundle\BasedocBundle\Entity\FolderInterface;
+use Faros\Bundle\BasedocBundle\Repository\FolderRepository;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Attribute\Groups;

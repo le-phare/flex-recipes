@@ -21,6 +21,7 @@ class Adjustment extends FarosAdjustment
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
+     *
      * @Serializer\Groups({"cart_api"})
      */
     protected $id;
