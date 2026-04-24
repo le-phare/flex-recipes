@@ -1,0 +1,7 @@
+---
+- name: Sync local database with remote
+  hosts: app
+  roles:
+    - db-pull
+  vars_files:
+    - _variables.yml
