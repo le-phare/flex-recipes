@@ -1,0 +1,26 @@
+# deploy variables
+ansible_user: "{{ lephare_bitwarden_secrets.ssh_user }}"
+ansible_host: "{{ lephare_bitwarden_secrets.ssh_domain }}"
+
+ansistrano_deploy_to: <remote_deploy_dir>
+application_environment: preprod
+
+# Store Bitwarden Secrets Manager secrets into a mapping (beware: change UUIDs for each environment)
+lephare_bitwarden_secrets: {
+    bdd_host: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: bdd_host>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    bdd_name: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: bdd_name>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    bdd_password: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: bdd_password>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    bdd_username: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: bdd_username>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    http_basic_password: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: http_basic_password>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    http_basic_user: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: http_basic_user>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    ssh_domain: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: ssh_domain>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+    ssh_user: "{{ lookup('bitwarden.secrets.lookup', '<UUID of Bitwarden Secret: ssh_user>', base_url='https://vault.bitwarden.eu', api_url='https://vault.bitwarden.eu/api', identity_url='https://identity.bitwarden.eu') }}",
+}
+
+lephare_default_git_branch: develop
+lephare_http_basic_secure: true
+lephare_prevent_robots_indexation: true
+
+# db-pull variables
+db_pull_remote_database_name: <remote_database_name>
+db_pull_remote_database_user: <remote_database_user>
