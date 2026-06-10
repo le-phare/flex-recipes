@@ -4,11 +4,16 @@ namespace App\Entity\Seo;
 
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Component\Seo\Model\RuleException as RuleExceptionModel;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'faros_seo_rule_exception')]
 class RuleException extends RuleExceptionModel
 {
+    use BlameableEntity;
+    use TimestampableEntity;
+
     /**
      * @var int|null
      */

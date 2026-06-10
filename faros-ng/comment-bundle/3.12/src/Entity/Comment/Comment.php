@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\CommentBundle\Repository\CommentRepository;
 use Faros\Component\Comment\Model\Comment as CommentModel;
-use Faros\Component\Comment\Model\CommentClosure;
 use Faros\Component\Comment\Model\CommentInterface;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
