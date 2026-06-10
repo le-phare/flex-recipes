@@ -10,6 +10,9 @@ use Faros\Component\EventLog\Model\Transaction as TransactionModel;
 use Faros\Component\EventLog\Traits\TimestampableImmutableEntity;
 use Gedmo\Blameable\Traits\BlameableEntity;
 
+/**
+ * @extends TransactionModel<Log, Tag, User>
+ */
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]
 #[ORM\Table(name: 'event_log_transaction')]
 class Transaction extends TransactionModel

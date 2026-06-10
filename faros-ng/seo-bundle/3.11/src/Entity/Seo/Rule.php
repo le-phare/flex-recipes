@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\SeoBundle\Repository\RuleRepository;
 use Faros\Component\Seo\Model\Rule as RuleModel;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @extends RuleModel<RuleException>
@@ -14,6 +15,8 @@ use Faros\Component\Seo\Model\Rule as RuleModel;
 #[ORM\Table(name: 'faros_seo_rule')]
 class Rule extends RuleModel
 {
+    use TimestampableEntity;
+
     /**
      * @var int|null
      */
