@@ -18,6 +18,9 @@ class Adjustment extends FarosAdjustment
     use BlameableEntity;
     use TimestampableEntity;
 
+    /**
+     * @var int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Component\User\Model\Group as GroupModel;
 
@@ -20,6 +21,9 @@ class Group extends GroupModel
     #[ORM\Column(type: 'integer')]
     protected $id;
 
+    /**
+     * @var Collection<array-key, User>
+     */
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'groups')]
     #[ORM\JoinTable(name: 'faros_group_member')]
     protected $users;
