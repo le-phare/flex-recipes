@@ -33,14 +33,14 @@ class Transaction extends TransactionModel
      * @var Collection<int, Tag>
      */
     #[ORM\ManyToMany(targetEntity: Tag::class)]
-    #[ORM\JoinTable(name: 'faros_transaction_tag')]
+    #[ORM\JoinTable(name: 'event_log_transaction_tag')]
     protected Collection $tags;
 
     /**
      * @var Collection<int, User>
      */
     #[ORM\ManyToMany(targetEntity: User::class)]
-    #[ORM\JoinTable(name: 'faros_transaction_user')]
+    #[ORM\JoinTable(name: 'event_log_transaction_user')]
     protected Collection $viewedBy;
 
     /**

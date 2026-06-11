@@ -33,7 +33,9 @@ class Export extends ExportModel
     #[ORM\ManyToMany(targetEntity: Group::class)]
     protected Collection $groups;
 
-    /** @var Collection<int, ExportTag> */
+    /**
+     * @var Collection<array-key, ExportTag>
+     */
     #[ORM\ManyToMany(targetEntity: ExportTag::class, cascade: ['persist'])]
     protected Collection $tags;
 }
