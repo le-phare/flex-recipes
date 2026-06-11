@@ -1,0 +1,14 @@
+security:
+    role_hierarchy:
+        ROLE_ALLOWED_TO_SWITCH: ~
+        ROLE_ADMIN:
+            - ROLE_ADMIN_LOGIN
+            - ROLE_ADMIN_USER
+            - ROLE_ADMIN_GROUP
+            - ROLE_ADMIN_ACTION
+            - ROLE_ADMIN_MEDIA
+
+imports:
+    - { resource: "@FarosAdminBundle/config/role/core.yml" }
+    - { resource: "@FarosAdminBundle/config/role/elfinder.yml" }
+    - { resource: "@FarosAdminBundle/config/role/seo.yml" }

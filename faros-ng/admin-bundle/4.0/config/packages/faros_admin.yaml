@@ -1,0 +1,8 @@
+faros_admin:
+    firewalls: ["main"]
+
+twig:
+    globals:
+        project:
+            name: Faros
+            logo: /bundles/farostheme/img/logo-faros.png
