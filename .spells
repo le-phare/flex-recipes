@@ -1,0 +1,27 @@
+#!/bin/sh
+
+_docker_run() {
+    if [ "$(uname -s)" != "Darwin" ]; then
+        docker run --init --rm -it -u "$(id -u):$(id -g)" "$@"
+    else
+        docker run --init --rm -it "$@"
+    fi
+}
+
+_docker_run_php() {
+    _docker_run -v "${COMPOSER_HOME:-$HOME/.composer}":/tmp/composer -v ./:/var/www/symfony -e COMPOSER_HOME=/tmp/composer -w /var/www/symfony lephare/php:8.5 "$@"
+}
+
+composer() {
+    _docker_run_php php /usr/local/bin/composer "$@"
+}
+
+php() {
+    _docker_run_php php "$@"
+}
+
+sf() {
+    _docker_run_php php bin/console "$@"
+}
+
+echo composer php sf
