@@ -118,6 +118,9 @@
                         "use Faros\\Component\\EventLog\\Traits\\TimestampableImmutableEntity;",
                         "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
                         "",
+                        "/**",
+                        " * @extends TransactionModel<Log, Tag, User>",
+                        " */",
                         "#[ORM\\Entity(repositoryClass: TransactionRepository::class)]",
                         "#[ORM\\Table(name: 'event_log_transaction')]",
                         "class Transaction extends TransactionModel",
@@ -164,7 +167,7 @@
                     "executable": false
                 }
             },
-            "ref": "8b8f2db701e165e8bb5a2fc66ee09f95fac63492"
+            "ref": "4ef8a51ea5e62ce9cd17c6ff60db8d7fb928f0b8"
         }
     }
 }
