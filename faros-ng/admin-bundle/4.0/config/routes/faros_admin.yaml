@@ -1,0 +1,19 @@
+faros_admin_admin:
+    resource: "@FarosAdminBundle/config/routing/admin.yml"
+
+faros_admin_core:
+    resource: "@FarosAdminBundle/config/routing/core.yml"
+
+faros_admin_export:
+    resource: "@FarosAdminBundle/config/routing/export.yml"
+
+faros_admin_elfinder:
+    resource: "@FarosAdminBundle/config/routing/elfinder.yml"
+# faros_admin_seo:
+#     resource: "@FarosAdminBundle/config/routing/seo.yml"
+
+# faros_admin_event_log:
+#     resource: "@FarosAdminBundle/config/routing/event_log.yml"
+
+# faros_admin_scheduled_task:
+#     resource: "@FarosAdminBundle/config/routing/scheduled_task.yml"

@@ -1,0 +1,2 @@
+faros_glide:
+    resource: "@FarosGlideBundle/config/routing.yml"
