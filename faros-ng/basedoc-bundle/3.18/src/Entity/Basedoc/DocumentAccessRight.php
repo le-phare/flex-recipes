@@ -9,6 +9,9 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 
+/**
+ * @extends FarosDocumentAccessRight<Document>
+ */
 #[ORM\Entity]
 #[ORM\Table(name: 'faros_basedoc_document_access_right')]
 class DocumentAccessRight extends FarosDocumentAccessRight

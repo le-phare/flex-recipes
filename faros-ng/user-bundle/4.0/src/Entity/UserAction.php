@@ -7,10 +7,16 @@ use Faros\Bundle\UserBundle\Repository\ActionRepository;
 use Faros\Component\User\Model\Action as ActionModel;
 use Faros\Component\User\Model\UserInterface;
 
+/**
+ * @extends ActionModel<User>
+ */
 #[ORM\Entity(repositoryClass: ActionRepository::class)]
 #[ORM\Table(name: 'faros_user_action')]
 class UserAction extends ActionModel
 {
+    /**
+     * @var int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]

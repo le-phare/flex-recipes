@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\NotificationBundle\Repository\NotificationRepository;
 use Faros\Component\Notification\Model\Notification as NotificationModel;
 use Faros\Component\User\Model\UserInterface;
 
+/**
+ * @extends NotificationModel<User>
+ */
 #[ORM\Entity(repositoryClass: NotificationRepository::class)]
 #[ORM\Table(name: 'faros_notification')]
 class Notification extends NotificationModel
