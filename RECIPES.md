@@ -8,12 +8,13 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/basedoc-bundle](https://packagist.org/packages/faros-ng/basedoc-bundle) | [4.0](../../../tree/main/faros-ng/basedoc-bundle/4.0) |  |
 | [faros-ng/code-quality-pack](https://packagist.org/packages/faros-ng/code-quality-pack) | [2.3](../../../tree/main/faros-ng/code-quality-pack/2.3) |  |
 | [faros-ng/comment-bundle](https://packagist.org/packages/faros-ng/comment-bundle) | [3.12](../../../tree/main/faros-ng/comment-bundle/3.12) |  |
+| [faros-ng/commerce-bundle](https://packagist.org/packages/faros-ng/commerce-bundle) | [4.0](../../../tree/main/faros-ng/commerce-bundle/4.0) |  |
 | [faros-ng/currency-bundle](https://packagist.org/packages/faros-ng/currency-bundle) | [4.0](../../../tree/main/faros-ng/currency-bundle/4.0) |  |
 | [faros-ng/deploy-pack](https://packagist.org/packages/faros-ng/deploy-pack) | [1.7](../../../tree/main/faros-ng/deploy-pack/1.7) |  |
 | [faros-ng/docker-pack](https://packagist.org/packages/faros-ng/docker-pack) | [3.0](../../../tree/main/faros-ng/docker-pack/3.0) |  |
 | [faros-ng/event-log-bundle](https://packagist.org/packages/faros-ng/event-log-bundle) | [4.0](../../../tree/main/faros-ng/event-log-bundle/4.0) |  |
 | [faros-ng/export-bundle](https://packagist.org/packages/faros-ng/export-bundle) | [4.0](../../../tree/main/faros-ng/export-bundle/4.0) |  |
-| [faros-ng/glide-bundle](https://packagist.org/packages/faros-ng/glide-bundle) | [0.1](../../../tree/main/faros-ng/glide-bundle/0.1) |  |
+| [faros-ng/glide-bundle](https://packagist.org/packages/faros-ng/glide-bundle) | [3.0](../../../tree/main/faros-ng/glide-bundle/3.0) |  |
 | [faros-ng/help-bundle](https://packagist.org/packages/faros-ng/help-bundle) | [3.14](../../../tree/main/faros-ng/help-bundle/3.14) |  |
 | [faros-ng/integration-bundle](https://packagist.org/packages/faros-ng/integration-bundle) | [0.1](../../../tree/main/faros-ng/integration-bundle/0.1) |  |
 | [faros-ng/notification-bundle](https://packagist.org/packages/faros-ng/notification-bundle) | [3.12](../../../tree/main/faros-ng/notification-bundle/3.12) |  |
@@ -26,7 +27,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/theme-bundle](https://packagist.org/packages/faros-ng/theme-bundle) | [3.0](../../../tree/main/faros-ng/theme-bundle/3.0) |  |
 | [faros-ng/toolbar-bundle](https://packagist.org/packages/faros-ng/toolbar-bundle) | [3.15](../../../tree/main/faros-ng/toolbar-bundle/3.15) |  |
 | [faros-ng/user-bundle](https://packagist.org/packages/faros-ng/user-bundle) | [4.0](../../../tree/main/faros-ng/user-bundle/4.0) |  |
-| [faros-ng/user-feedback-bundle](https://packagist.org/packages/faros-ng/user-feedback-bundle) | [0.1](../../../tree/main/faros-ng/user-feedback-bundle/0.1) |  |
+| [faros-ng/user-feedback-bundle](https://packagist.org/packages/faros-ng/user-feedback-bundle) | [3.0](../../../tree/main/faros-ng/user-feedback-bundle/3.0) |  |
 | [friendsofphp/php-cs-fixer](https://packagist.org/packages/friendsofphp/php-cs-fixer) | [3.57](../../../tree/main/friendsofphp/php-cs-fixer/3.57) | `cs-fixer`, `csfixer`, `php-cs-fixer`, `phpcsfixer` |
 | [makinacorpus/db-tools-bundle](https://packagist.org/packages/makinacorpus/db-tools-bundle) | [2.0](../../../tree/main/makinacorpus/db-tools-bundle/2.0) |  |
 | [phpstan/phpstan](https://packagist.org/packages/phpstan/phpstan) | [2.0](../../../tree/main/phpstan/phpstan/2.0) |  |

@@ -1,0 +1,72 @@
+{
+    "manifests": {
+        "faros-ng/commerce-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\CommerceBundle\\FarosCommerceBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "src/": "%SRC_DIR%/"
+                }
+            },
+            "files": {
+                "src/Entity/Commerce/Order.php": {
+                    "contents": [
+                        "<?php",
+                        "",
+                        "namespace App\\Entity\\Commerce;",
+                        "",
+                        "use Doctrine\\Common\\Collections\\Collection;",
+                        "use Doctrine\\ORM\\Mapping as ORM;",
+                        "use Faros\\Bundle\\CommerceBundle\\Model\\Order as FarosOrder;",
+                        "use Faros\\Bundle\\CommerceBundle\\Model\\ShopUserInterface;",
+                        "use Faros\\Bundle\\CommerceBundle\\Repository\\OrderRepository;",
+                        "use Gedmo\\Blameable\\Traits\\BlameableEntity;",
+                        "use Gedmo\\Timestampable\\Traits\\TimestampableEntity;",
+                        "use Symfony\\Component\\Serializer\\Annotation as Serializer;",
+                        "",
+                        "/**",
+                        " * @extends FarosOrder<Adjustment, OrderItem, ShopUserInterface>",
+                        " */",
+                        "#[ORM\\Entity(repositoryClass: OrderRepository::class)]",
+                        "#[ORM\\Table(name: 'commerce_order')]",
+                        "class Order extends FarosOrder",
+                        "{",
+                        "    use BlameableEntity;",
+                        "    use TimestampableEntity;",
+                        "",
+                        "    /**",
+                        "     * @var int|null",
+                        "     */",
+                        "    #[ORM\\Id]",
+                        "    #[ORM\\GeneratedValue]",
+                        "    #[ORM\\Column(type: 'integer')]",
+                        "    #[Serializer\\Groups(['cart_api'])]",
+                        "    protected $id;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<array-key, OrderItem>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: OrderItem::class, mappedBy: 'order', orphanRemoval: true, cascade: ['persist'])]",
+                        "    #[Serializer\\Groups(['cart_api'])]",
+                        "    #[ORM\\OrderBy(['createdAt' => 'asc'])]",
+                        "    protected $items;",
+                        "",
+                        "    /**",
+                        "     * @var Collection<array-key, Adjustment>",
+                        "     */",
+                        "    #[ORM\\OneToMany(targetEntity: Adjustment::class, mappedBy: 'order', orphanRemoval: true, cascade: ['persist'])]",
+                        "    #[Serializer\\Groups(['cart_api'])]",
+                        "    protected $adjustments;",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "90c1ece9fc60b14f7b18c51dd3349b6e5c43ff44"
+        }
+    }
+}

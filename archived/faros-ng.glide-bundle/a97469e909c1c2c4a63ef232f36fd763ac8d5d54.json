@@ -1,0 +1,47 @@
+{
+    "manifests": {
+        "faros-ng/glide-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\GlideBundle\\FarosGlideBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/faros_glide.yaml": {
+                    "contents": [
+                        "faros_glide:",
+                        "#    presets:",
+                        "#        example:",
+                        "#            w: 360",
+                        "#            h: 240",
+                        "#            fit: crop",
+                        "    servers:",
+                        "        image:",
+                        "            source: 'default.storage'",
+                        "            cache: 'default.storage'",
+                        "            max_image_size: 4000000",
+                        "            defaults:",
+                        "                fm: pjpg",
+                        "                q: 80",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "config/routes/faros_glide.yaml": {
+                    "contents": [
+                        "faros_glide:",
+                        "    resource: \"@FarosGlideBundle/Resources/config/routing.yml\"",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "a97469e909c1c2c4a63ef232f36fd763ac8d5d54"
+        }
+    }
+}
