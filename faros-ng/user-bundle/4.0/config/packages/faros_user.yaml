@@ -1,0 +1,17 @@
+faros_user:
+    action_class: App\Entity\UserAction
+    group_class: App\Entity\Group
+    user_class: App\Entity\User
+
+monolog:
+    channels:
+        - faros_action
+    handlers:
+        faros_action_buffer:
+            type: buffer
+            handler: dbal_handler
+            channels:
+                - faros_action
+        dbal_handler:
+            type: service
+            id: "faros_user.doctrine_handler"

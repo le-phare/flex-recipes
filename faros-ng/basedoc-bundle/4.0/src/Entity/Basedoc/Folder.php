@@ -2,10 +2,10 @@
 
 namespace App\Entity\Basedoc;
 
-use App\Repository\Basedoc\FolderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Faros\Bundle\BasedocBundle\Repository\FolderRepository;
 use Faros\Component\Basedoc\Model\Folder as FarosFolder;
 use Faros\Component\Basedoc\Model\FolderInterface;
 use Gedmo\Blameable\Traits\BlameableEntity;
@@ -48,7 +48,7 @@ class Folder extends FarosFolder
      * @var self|null
      */
     #[ORM\ManyToOne(targetEntity: Folder::class, cascade: ['persist'], inversedBy: 'childrenFolders')]
-    protected ?FolderInterface $parentFolder;
+    protected ?FolderInterface $parentFolder = null;
 
     /**
      * @var Collection<int, FolderAccessRight>
