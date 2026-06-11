@@ -28,5 +28,5 @@ class UserAction extends ActionModel
      */
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
-    protected ?UserInterface $impersonatedUser;
+    protected ?UserInterface $impersonatedUser = null;
 }

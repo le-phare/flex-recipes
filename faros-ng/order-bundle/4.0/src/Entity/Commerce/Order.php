@@ -46,7 +46,7 @@ class Order extends FarosOrder
     #[Serializer\Groups(['cart_api'])]
     protected Collection $adjustments;
 
-    /** @var CustomerProfile|null */
-    #[ORM\ManyToOne(targetEntity: CustomerProfile::class, inversedBy: 'orders')]
-    protected ?CustomerInterface $customer;
+    // /** @var CustomerProfile|null */
+    // #[ORM\ManyToOne(targetEntity: CustomerProfile::class, inversedBy: 'orders')]
+    // protected ?CustomerInterface $customer = null;
 }

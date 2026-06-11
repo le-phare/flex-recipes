@@ -24,5 +24,5 @@ class RuleException extends RuleExceptionModel
      * @var Rule|null
      */
     #[ORM\ManyToOne(targetEntity: Rule::class, inversedBy: 'exceptions')]
-    protected ?RuleInterface $rule;
+    protected ?RuleInterface $rule = null;
 }

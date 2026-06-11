@@ -48,7 +48,7 @@ class Folder extends FarosFolder
      * @var self|null
      */
     #[ORM\ManyToOne(targetEntity: Folder::class, cascade: ['persist'], inversedBy: 'childrenFolders')]
-    protected ?FolderInterface $parentFolder;
+    protected ?FolderInterface $parentFolder = null;
 
     /**
      * @var Collection<int, FolderAccessRight>

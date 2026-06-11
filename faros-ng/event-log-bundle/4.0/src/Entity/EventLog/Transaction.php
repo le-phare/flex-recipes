@@ -47,11 +47,11 @@ class Transaction extends TransactionModel
      * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class)]
-    protected ?UserInterface $assignee;
+    protected ?UserInterface $assignee = null;
 
     /**
      * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class)]
-    protected ?UserInterface $resolvedBy;
+    protected ?UserInterface $resolvedBy = null;
 }
