@@ -8,6 +8,9 @@ use Faros\Component\Seo\Model\RuleInterface;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
+/**
+ * @extends RuleExceptionModel<Rule>
+ */
 #[ORM\Entity]
 #[ORM\Table(name: 'faros_seo_rule_exception')]
 class RuleException extends RuleExceptionModel

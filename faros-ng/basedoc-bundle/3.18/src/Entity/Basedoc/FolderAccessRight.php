@@ -9,6 +9,9 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 
+/**
+ * @extends FarosFolderAccessRight<Folder>
+ */
 #[ORM\Entity]
 #[ORM\Table(name: 'faros_basedoc_folder_access_right')]
 class FolderAccessRight extends FarosFolderAccessRight

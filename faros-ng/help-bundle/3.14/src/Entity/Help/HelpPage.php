@@ -16,6 +16,9 @@ class HelpPage extends BaseHelpPage
     use BlameableEntity;
     use TimestampableEntity;
 
+    /**
+     * @var int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]

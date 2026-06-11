@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Faros\Bundle\UserBundle\Repository\ActionRepository;
 use Faros\Component\User\Model\Action as ActionModel;
 
+/**
+ * @extends ActionModel<User>
+ */
 #[ORM\Entity(repositoryClass: ActionRepository::class)]
 #[ORM\Table(name: 'faros_user_action')]
 class UserAction extends ActionModel

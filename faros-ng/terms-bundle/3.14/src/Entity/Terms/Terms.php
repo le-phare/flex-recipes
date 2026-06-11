@@ -20,6 +20,9 @@ class Terms extends TermsModel
     use BlameableEntity;
     use TimestampableEntity;
 
+    /**
+     * @var int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]

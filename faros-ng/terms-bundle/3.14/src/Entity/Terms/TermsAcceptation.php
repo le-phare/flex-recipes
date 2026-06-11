@@ -10,10 +10,16 @@ use Faros\Component\Terms\Model\TermsAcceptation as TermsAcceptationModel;
 use Faros\Component\Terms\Model\TermsInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @extends TermsAcceptationModel<Terms, User>
+ */
 #[ORM\Entity(repositoryClass: TermsAcceptationRepository::class)]
 #[ORM\Table(name: 'faros_terms_acceptation')]
 class TermsAcceptation extends TermsAcceptationModel
 {
+    /**
+     * @var int|null
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: Types::INTEGER)]
