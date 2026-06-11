@@ -20,6 +20,7 @@ class Transaction extends TransactionModel implements TransactionInterface
 
     /**
      * @var Collection<Tag>
+     *
      * @ORM\ManyToMany(targetEntity="Tag:class")
      * @ORM\JoinTable(name="_transaction_tag")
      */
@@ -27,6 +28,7 @@ class Transaction extends TransactionModel implements TransactionInterface
 
     /**
      * @var Collection<User>
+     *
      * @ORM\ManyToMany(targetEntity="User:class")
      * @ORM\JoinTable(name="_transaction_user")
      */
@@ -34,12 +36,14 @@ class Transaction extends TransactionModel implements TransactionInterface
 
     /**
      * @var User|null
+     *
      * @ORM\ManyToOne(targetEntity="User:class")
      */
     protected $assignee;
 
     /**
      * @var User|null
+     *
      * @ORM\ManyToOne(targetEntity="User:class")
      */
     protected $resolvedBy;

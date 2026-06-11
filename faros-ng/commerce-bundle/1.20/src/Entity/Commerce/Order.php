@@ -25,6 +25,7 @@ class Order extends FarosOrder
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(type="integer")
+     *
      * @Serializer\Groups({"cart_api"})
      */
     #[ORM\Id]
@@ -35,7 +36,9 @@ class Order extends FarosOrder
 
     /**
      * @ORM\OneToMany(targetEntity=OrderItem::class, mappedBy="order", orphanRemoval=true, cascade={"persist"})
+     *
      * @Serializer\Groups({"cart_api"})
+     *
      * @ORM\OrderBy({"createdAt": "asc"})
      *
      * @var Collection<int, OrderItem>
@@ -47,6 +50,7 @@ class Order extends FarosOrder
 
     /**
      * @ORM\OneToMany(targetEntity=Adjustment::class, mappedBy="order", orphanRemoval=true, cascade={"persist"})
+     *
      * @Serializer\Groups({"cart_api"})
      *
      * @var Collection<int, Adjustment>

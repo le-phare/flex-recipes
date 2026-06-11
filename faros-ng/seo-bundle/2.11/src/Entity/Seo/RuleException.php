@@ -15,6 +15,7 @@ class RuleException extends RuleExceptionModel
 {
     /**
      * @var int|null
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -26,6 +27,7 @@ class RuleException extends RuleExceptionModel
 
     /**
      * @var Rule|null
+     *
      * @ORM\ManyToOne(targetEntity=Rule::class, inversedBy="exceptions")
      */
     #[ORM\ManyToOne(targetEntity: Rule::class, inversedBy: 'exceptions')]

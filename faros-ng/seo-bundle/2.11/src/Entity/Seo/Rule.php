@@ -16,6 +16,7 @@ class Rule extends RuleModel
 {
     /**
      * @var int|null
+     *
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -27,6 +28,7 @@ class Rule extends RuleModel
 
     /**
      * @var Collection<int, RuleException>
+     *
      * @ORM\OneToMany(targetEntity=RuleException::class, mappedBy="rule")
      */
     #[ORM\OneToMany(targetEntity: RuleException::class, mappedBy: 'rule')]
