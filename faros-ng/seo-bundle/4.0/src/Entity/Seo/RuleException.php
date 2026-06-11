@@ -18,7 +18,7 @@ class RuleException extends RuleExceptionModel
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    protected ?int $id;
+    protected ?int $id = null;
 
     /**
      * @var Rule|null

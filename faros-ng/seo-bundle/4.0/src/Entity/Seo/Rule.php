@@ -20,7 +20,7 @@ class Rule extends RuleModel
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    protected ?int $id;
+    protected ?int $id = null;
 
     /**
      * @var Collection<int, RuleException>
