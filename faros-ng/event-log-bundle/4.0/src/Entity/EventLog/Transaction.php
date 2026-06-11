@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Entity\EventLog;
+
+use App\Entity\User;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Faros\Bundle\EventLogBundle\Repository\TransactionRepository;
+use Faros\Component\EventLog\Model\Transaction as TransactionModel;
+use Faros\Component\EventLog\Traits\TimestampableImmutableEntity;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+/**
+ * @extends TransactionModel<Log, Tag, User>
+ */
+#[ORM\Entity(repositoryClass: TransactionRepository::class)]
+#[ORM\Table(name: 'event_log_transaction')]
+class Transaction extends TransactionModel
+{
+    use BlameableEntity;
+    use TimestampableImmutableEntity;
+
+    /**
+     * @var int|null
+     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    protected $id;
+
+    /**
+     * @var Collection<int, Tag>
+     */
+    #[ORM\ManyToMany(targetEntity: Tag::class)]
+    #[ORM\JoinTable(name: 'faros_transaction_tag')]
+    protected Collection $tags;
+
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\ManyToMany(targetEntity: User::class)]
+    #[ORM\JoinTable(name: 'faros_transaction_user')]
+    protected Collection $viewedBy;
+
+    /**
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    protected ?UserInterface $assignee;
+
+    /**
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    protected ?UserInterface $resolvedBy;
+}

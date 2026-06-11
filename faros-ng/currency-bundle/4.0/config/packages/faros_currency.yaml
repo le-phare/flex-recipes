@@ -1,0 +1,2 @@
+faros_currency:
+    currency_class: App\Entity\Commerce\Currency

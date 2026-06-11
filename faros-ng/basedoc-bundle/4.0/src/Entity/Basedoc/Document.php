@@ -24,7 +24,7 @@ class Document extends FarosDocument
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     protected ?int $id = null;
 
     /**
@@ -33,6 +33,7 @@ class Document extends FarosDocument
     #[ORM\JoinTable(name: 'faros_basedoc_folder_document')]
     #[ORM\InverseJoinColumn(name: 'folder_id', referencedColumnName: 'id')]
     #[ORM\ManyToMany(targetEntity: Folder::class, inversedBy: 'documents')]
+    #[Groups(['basedoc.folder.get', 'basedoc.document.get'])]
     #[MaxDepth(1)]
     protected Collection $folders;
 
