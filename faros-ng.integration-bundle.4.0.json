@@ -1,0 +1,28 @@
+{
+    "manifests": {
+        "faros-ng/integration-bundle": {
+            "manifest": {
+                "bundles": {
+                    "Faros\\Bundle\\IntegrationBundle\\FarosIntegrationBundle": [
+                        "dev"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/routes/faros_integration.yaml": {
+                    "contents": [
+                        "faros_integration:",
+                        "    resource: \"@FarosIntegrationBundle/config/routing.yml\"",
+                        "    prefix: /_dev",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "965be27fa8e90c8b5480c6dce7f1b932e674688a"
+        }
+    }
+}

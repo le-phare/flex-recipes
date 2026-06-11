@@ -12,7 +12,8 @@
             "2.0",
             "2.14",
             "3.0",
-            "3.5"
+            "3.5",
+            "4.0"
         ],
         "faros-ng/basedoc-bundle": [
             "3.6",
@@ -82,13 +83,15 @@
         ],
         "faros-ng/glide-bundle": [
             "0.1",
-            "3.0"
+            "3.0",
+            "4.0"
         ],
         "faros-ng/help-bundle": [
             "3.14"
         ],
         "faros-ng/integration-bundle": [
-            "0.1"
+            "0.1",
+            "4.0"
         ],
         "faros-ng/notification-bundle": [
             "3.12"

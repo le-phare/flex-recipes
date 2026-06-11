@@ -4,7 +4,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 
 | Package | Latest Recipe | Aliases |
 | --- | --- | --- |
-| [faros-ng/admin-bundle](https://packagist.org/packages/faros-ng/admin-bundle) | [3.5](../../../tree/main/faros-ng/admin-bundle/3.5) |  |
+| [faros-ng/admin-bundle](https://packagist.org/packages/faros-ng/admin-bundle) | [4.0](../../../tree/main/faros-ng/admin-bundle/4.0) |  |
 | [faros-ng/basedoc-bundle](https://packagist.org/packages/faros-ng/basedoc-bundle) | [4.0](../../../tree/main/faros-ng/basedoc-bundle/4.0) |  |
 | [faros-ng/code-quality-pack](https://packagist.org/packages/faros-ng/code-quality-pack) | [2.3](../../../tree/main/faros-ng/code-quality-pack/2.3) |  |
 | [faros-ng/comment-bundle](https://packagist.org/packages/faros-ng/comment-bundle) | [3.12](../../../tree/main/faros-ng/comment-bundle/3.12) |  |
@@ -14,9 +14,9 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/docker-pack](https://packagist.org/packages/faros-ng/docker-pack) | [3.0](../../../tree/main/faros-ng/docker-pack/3.0) |  |
 | [faros-ng/event-log-bundle](https://packagist.org/packages/faros-ng/event-log-bundle) | [4.0](../../../tree/main/faros-ng/event-log-bundle/4.0) |  |
 | [faros-ng/export-bundle](https://packagist.org/packages/faros-ng/export-bundle) | [4.0](../../../tree/main/faros-ng/export-bundle/4.0) |  |
-| [faros-ng/glide-bundle](https://packagist.org/packages/faros-ng/glide-bundle) | [3.0](../../../tree/main/faros-ng/glide-bundle/3.0) |  |
+| [faros-ng/glide-bundle](https://packagist.org/packages/faros-ng/glide-bundle) | [4.0](../../../tree/main/faros-ng/glide-bundle/4.0) |  |
 | [faros-ng/help-bundle](https://packagist.org/packages/faros-ng/help-bundle) | [3.14](../../../tree/main/faros-ng/help-bundle/3.14) |  |
-| [faros-ng/integration-bundle](https://packagist.org/packages/faros-ng/integration-bundle) | [0.1](../../../tree/main/faros-ng/integration-bundle/0.1) |  |
+| [faros-ng/integration-bundle](https://packagist.org/packages/faros-ng/integration-bundle) | [4.0](../../../tree/main/faros-ng/integration-bundle/4.0) |  |
 | [faros-ng/notification-bundle](https://packagist.org/packages/faros-ng/notification-bundle) | [3.12](../../../tree/main/faros-ng/notification-bundle/3.12) |  |
 | [faros-ng/order-bundle](https://packagist.org/packages/faros-ng/order-bundle) | [4.0](../../../tree/main/faros-ng/order-bundle/4.0) |  |
 | [faros-ng/parameter-bundle](https://packagist.org/packages/faros-ng/parameter-bundle) | [3.6](../../../tree/main/faros-ng/parameter-bundle/3.6) |  |
