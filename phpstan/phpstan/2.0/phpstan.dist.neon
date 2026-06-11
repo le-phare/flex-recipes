@@ -16,6 +16,10 @@ parameters:
         - migrations
         - src
         - tests
+    excludePaths:
+        - tests/application-loader.php
+        - tests/bootstrap.php
+        - tests/object-manager.php
 #     reportUnmatchedIgnoredErrors: false # Décommenter pour utiliser la baseline
     tmpDir: var/phpstan
 
