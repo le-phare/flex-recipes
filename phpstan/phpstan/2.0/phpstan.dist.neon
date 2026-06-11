@@ -1,15 +1,27 @@
-# Config Phpstan
+# Comment régénérer la baseline ?
+# $ composer install (idéalement composer update)
+# $ composer run analyse
+# Corriger toutes les erreurs jusqu'à avoir "[OK] No errors"
+# $ composer exec phpstan -- analyse --generate-baseline
+# Vérifier le diff Git : il ne doit normalement avoir aucune nouvelle erreur ignorée (sauf si c'est une erreur existante qui a changé)
+# Au besoin, corriger les erreurs et reprendre ce guide au début
+
+# Décommenter pour utiliser la baseline
+# includes:
+#     - phpstan-baseline.neon
 
 parameters:
-    level: 5
+    level: 10 # Ne pas abaisser ce niveau sur des projets récents, utiliser la baseline si nécessaire : https://phpstan.org/user-guide/baseline
     paths:
-        - src
         - migrations
-
+        - src
+        - tests
+#     reportUnmatchedIgnoredErrors: false # Décommenter pour utiliser la baseline
     tmpDir: var/phpstan
 
     doctrine:
         objectManagerLoader: tests/object-manager.php
 
     symfony:
+        consoleApplicationLoader: tests/console-application.php
         containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
