@@ -1,0 +1,21 @@
+---
+- name: Deploy app
+  hosts: app
+  roles:
+    - lephare.ansible-deploy
+  vars_files:
+    - _variables.yml
+  tasks:
+    - name: Check directory
+      delegate_to: localhost
+      stat:
+        path: ../public/build/
+      register: build_dir
+
+    - name: Upload assets
+      when: build_dir.stat.exists and build_dir.stat.isdir
+      synchronize:
+        src: ../public/build
+        dest: "{{ ansistrano_deploy_to }}/shared/public/"
+        recursive: true
+        delete: true
