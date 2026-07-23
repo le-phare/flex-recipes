@@ -10,7 +10,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [faros-ng/comment-bundle](https://packagist.org/packages/faros-ng/comment-bundle) | [3.12](../../../tree/main/faros-ng/comment-bundle/3.12) |  |
 | [faros-ng/commerce-bundle](https://packagist.org/packages/faros-ng/commerce-bundle) | [4.0](../../../tree/main/faros-ng/commerce-bundle/4.0) |  |
 | [faros-ng/currency-bundle](https://packagist.org/packages/faros-ng/currency-bundle) | [4.0](../../../tree/main/faros-ng/currency-bundle/4.0) |  |
-| [faros-ng/deploy-pack](https://packagist.org/packages/faros-ng/deploy-pack) | [1.7](../../../tree/main/faros-ng/deploy-pack/1.7) |  |
+| [faros-ng/deploy-pack](https://packagist.org/packages/faros-ng/deploy-pack) | [2.0](../../../tree/main/faros-ng/deploy-pack/2.0) |  |
 | [faros-ng/docker-pack](https://packagist.org/packages/faros-ng/docker-pack) | [3.0](../../../tree/main/faros-ng/docker-pack/3.0) |  |
 | [faros-ng/event-log-bundle](https://packagist.org/packages/faros-ng/event-log-bundle) | [4.0](../../../tree/main/faros-ng/event-log-bundle/4.0) |  |
 | [faros-ng/export-bundle](https://packagist.org/packages/faros-ng/export-bundle) | [4.0](../../../tree/main/faros-ng/export-bundle/4.0) |  |
