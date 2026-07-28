@@ -24,9 +24,10 @@ lephare_crontab_path: "{{ ansistrano_release_path.stdout }}/.crontab"
 lephare_crontab_install: true
 lephare_install_adminer: false
 lephare_packagist_com_token: "{{ vault_lephare_packagist_com_token }}"
-lephare_set_dotenv_variables: {
-    DATABASE_URL: "{{ lephare_bitwarden_secrets.bdd_username }}:{{ lephare_bitwarden_secrets.bdd_password }}@{{ lephare_bitwarden_secrets.bdd_host }}/{{ lephare_bitwarden_secrets.bdd_name }}",
-}
+
+# Dotenv variables for all environments. Environment-specific variables must be put in vars files
+lephare_set_dotenv_variables:
+    DATABASE_URL: "postgres://{{ lephare_bitwarden_secrets.bdd_username | urlencode }}:{{ lephare_bitwarden_secrets.bdd_password | urlencode }}@{{ lephare_bitwarden_secrets.bdd_host | urlencode }}/{{ lephare_bitwarden_secrets.bdd_name | urlencode }}?serverVersion=18&charset=utf8"
 
 # (db-pull) Database settings
 db_pull_local_database_host: <local_database_host>
