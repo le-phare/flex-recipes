@@ -13,7 +13,7 @@
     },
     "dotenv": {
         "dev": {
-            "DATABASE_URL": "postgres://postgres:root@pgsql_17:5432/project?serverVersion=17&charset=utf8",
+            "DATABASE_URL": "postgres://postgres:root@pgsql_18:5432/project?serverVersion=18&charset=utf8",
             "MAILER_DSN": "smtp://maildev:25",
             "SENTRY_DSN": ""
         }
