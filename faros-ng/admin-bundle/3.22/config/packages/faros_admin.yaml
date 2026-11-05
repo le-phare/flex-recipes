@@ -1,0 +1,10 @@
+faros_admin:
+    firewalls: ["main"]
+    security:
+        hash_password_reset_token: true
+
+twig:
+    globals:
+        project:
+            name: Faros
+            logo: /bundles/farostheme/img/logo-faros.png
